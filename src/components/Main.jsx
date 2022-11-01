@@ -44,7 +44,8 @@ export function Main() {
                     no={i}
                     x={game[e].x[tick]}
                     y={game[e].y[tick]}
-                    angle={game[e].angle[tick]}
+                    angle={game[e].a[tick]}
+                    hp={game[e].hp[tick]}
                   />
                 );
               })}
@@ -52,7 +53,11 @@ export function Main() {
         </RadarContainer>
         <SideRadar>{tick}</SideRadar>
       </Container>
-      <Controls tick={tick} setTick={setTick}></Controls>
+      <Controls
+        tick={tick}
+        setTick={setTick}
+        len={game.length ? game.length : 100}
+      ></Controls>
     </div>
   );
 }

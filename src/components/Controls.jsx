@@ -1,3 +1,4 @@
+import { Slider } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -6,7 +7,7 @@ const PlayerContainer = styled.div`
   justify-content: center;
 `;
 
-export function Controls({ tick, setTick }) {
+export function Controls({ tick, setTick, len }) {
   // const tickContext = useContext(TickContext);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -14,8 +15,12 @@ export function Controls({ tick, setTick }) {
   useEffect(() => {
     if (isPlaying) {
       id = setInterval(() => {
-        setTick((tick) => tick + 1);
-      }, 40);
+        if (tick < len - 1) {
+          setTick((tick) => tick + 1);
+        } else {
+          setIsPlaying(false);
+        }
+      }, 100); //same as in Player.jsx
     }
     return () => {
       clearInterval(id);
@@ -25,6 +30,13 @@ export function Controls({ tick, setTick }) {
   return (
     <PlayerContainer>
       <button onClick={() => setIsPlaying(!isPlaying)}>PLAY</button>
+      <Slider
+        value={tick}
+        step={1}
+        min={0}
+        max={len - 1}
+        onChange={(e, v) => setTick(v)}
+      />
     </PlayerContainer>
   );
 }
