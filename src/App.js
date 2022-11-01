@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Nav } from "./components/Nav";
 import { Main } from "./components/Main";
 import { useState } from "react";
+import { GameContext } from "./components/Context";
 
 const Container = styled.div`
   width: 100%;
@@ -16,17 +17,17 @@ const Article = styled.article`
 `;
 
 function App() {
-  const setTick = (x) => setContext({ tick: x, setTick: setTick });
-  const [context, setContext] = useState({ tick: 0, setTick: setTick });
+  const [game, setGame] = useState({});
 
   return (
     <Container>
-      {/* <TickContext.Provider value={context}> */}
-      <Article>
-        <Main />
-      </Article>
-      {/* </TickContext.Provider> */}
-      <Nav>nav</Nav>
+      <GameContext.Provider value={game}>
+        <Article>
+          <Main />
+        </Article>
+
+        <Nav setGame={setGame}>nav</Nav>
+      </GameContext.Provider>
     </Container>
   );
 }

@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import { TickContext } from "./Context";
 
 const PlayerContainer = styled.div`
   display: flex;

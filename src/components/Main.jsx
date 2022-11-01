@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
-import map from "../assets/maps/de_dust2/radar.png";
+import map from "../assets/maps/de_mirage/radar.png";
+import { GameContext } from "./Context";
 import { Controls } from "./Controls";
+import Player from "./Player";
 import Radar from "./Radar";
 
 const Container = styled.div`
@@ -18,11 +21,12 @@ const SideRadar = styled.div`
   background-color: #aaa;
 `;
 const RadarContainer = styled.div`
-  width: calc(100% - 200px);
+  width: calc(100% - 400px);
 `;
 
 export function Main() {
   const [tick, setTick] = useState(0);
+  const game = useContext(GameContext);
 
   return (
     <div>
@@ -32,6 +36,18 @@ export function Main() {
         <RadarContainer>
           <Radar>
             <img src={map} width={"100%"} />
+            {game.players &&
+              game.players.map((e, i) => {
+                return (
+                  <Player
+                    key={i}
+                    no={i}
+                    x={game[e].x[tick]}
+                    y={game[e].y[tick]}
+                    angle={game[e].angle[tick]}
+                  />
+                );
+              })}
           </Radar>
         </RadarContainer>
         <SideRadar>{tick}</SideRadar>
