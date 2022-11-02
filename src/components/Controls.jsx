@@ -13,14 +13,17 @@ export function Controls({ tick, setTick, len }) {
 
   var id = null;
   useEffect(() => {
+    var counter = tick;
     if (isPlaying) {
       id = setInterval(() => {
-        if (tick < len - 1) {
+        counter += 1;
+        if (counter < len) {
           setTick((tick) => tick + 1);
         } else {
           setIsPlaying(false);
+          clearInterval(id);
         }
-      }, 100); //same as in Player.jsx
+      }, 200); //same as in Player.jsx
     }
     return () => {
       clearInterval(id);
