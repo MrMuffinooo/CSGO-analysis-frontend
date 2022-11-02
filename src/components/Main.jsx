@@ -5,6 +5,7 @@ import map from "../assets/maps/de_mirage/radar.png";
 import { GameContext } from "./Context";
 import { Controls } from "./Controls";
 import Player from "./Player";
+import Bomb from "./Bomb";
 import Radar from "./Radar";
 
 const Container = styled.div`
@@ -50,6 +51,13 @@ export function Main() {
                   />
                 );
               })}
+            {game.bomb && (
+              <Bomb
+                x={game.bomb.x[tick]}
+                y={game.bomb.y[tick]}
+                state={game.bomb.state[tick]}
+              />
+            )}
           </Radar>
         </RadarContainer>
         <SideRadar>{tick}</SideRadar>
