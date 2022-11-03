@@ -30,7 +30,7 @@ function Player({ no, hp, x, y, angle, team, fires }) {
   const OFFSETY = 3410;
   const xPos = (x + OFFSETX) / RESOLUTION - 10;
   const yPos = (y + OFFSETY) / RESOLUTION - 12;
-  const fixAngle = angle;
+  const fixAngle = -angle + 90;
   const rot = hp !== 0 ? "rotate(" + fixAngle + "deg)" : "none";
 
   const getPlayerIcon = () => {
