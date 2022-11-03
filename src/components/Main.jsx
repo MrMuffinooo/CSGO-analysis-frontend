@@ -48,6 +48,7 @@ export function Main() {
                     angle={game[e].a[tick]}
                     hp={game[e].hp[tick]}
                     team={game[e].team}
+                    fires={game[e].fires[tick]}
                   />
                 );
               })}

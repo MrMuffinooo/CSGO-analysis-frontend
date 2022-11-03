@@ -4,8 +4,6 @@ import bomb from "../assets/icons/bomb-planted.png";
 import defused from "../assets/icons/bomb-defused.png";
 
 const BombIndicator = styled.div`
-  width: 10px;
-  height: 10px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,8 +22,8 @@ function Player({ x, y, state }) {
   const RESOLUTION = 5.02; //TODO dynamic
   const OFFSETX = 3240;
   const OFFSETY = 3410;
-  const xPos = (x + OFFSETX) / RESOLUTION - 5;
-  const yPos = (y + OFFSETY) / RESOLUTION - 5;
+  const xPos = (x + OFFSETX) / RESOLUTION - 3;
+  const yPos = (y + OFFSETY) / RESOLUTION - 10;
 
   const bombIcon = `url(${state < 2 ? bomb : defused})`;
 
@@ -35,6 +33,8 @@ function Player({ x, y, state }) {
         left: xPos,
         bottom: yPos,
         backgroundImage: bombIcon,
+        width: state < 1 ? "10px" : "15px",
+        height: state < 1 ? "10px" : "15px",
       }}
     ></BombIndicator>
   );

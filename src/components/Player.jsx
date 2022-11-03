@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import tIcon from "../assets/icons/tIcon.png";
+import tIconFire from "../assets/icons/tIcon_fire.png";
 import tDead from "../assets/icons/tDead.png";
 import ctIcon from "../assets/icons/ctIcon.png";
+import ctIconFire from "../assets/icons/ctIcon_fire.png";
 import ctDead from "../assets/icons/ctDead.png";
 
 const PlayerIndicator = styled.div`
@@ -22,7 +24,7 @@ const PlayerIndicator = styled.div`
   transition-duration: 200ms; // same as in Controls.jsx
 `;
 
-function Player({ no, hp, x, y, angle, team }) {
+function Player({ no, hp, x, y, angle, team, fires }) {
   const RESOLUTION = 5.02; //TODO dynamic
   const OFFSETX = 3240;
   const OFFSETY = 3410;
@@ -40,8 +42,16 @@ function Player({ no, hp, x, y, angle, team }) {
       }
     } else {
       if (team === "T") {
+        if (fires) {
+          console.log(no + " FIRE");
+          return tIconFire;
+        }
         return tIcon;
       } else {
+        if (fires) {
+          console.log(no + " FIRE");
+          return ctIconFire;
+        }
         return ctIcon;
       }
     }
