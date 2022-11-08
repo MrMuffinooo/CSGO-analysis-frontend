@@ -23,6 +23,15 @@ const Banner = styled.div`
   font-weight: bold;
 `;
 
+const MapBanner = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  font-size: 32px;
+  font-weight: bold;
+`;
+
 const SideRadar = styled.div`
   width: 200px;
   background-color: #aaa;
@@ -30,9 +39,27 @@ const SideRadar = styled.div`
 const RadarContainer = styled.div`
   width: calc(100% - 400px);
 `;
+const TabsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 60px;
+  font-size: 32px;
+  font-weight: bold;
+`;
+
+const Tab = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
+  cursor: pointer;
+`;
 
 export function Main() {
   const [tick, setTick] = useState(0);
+  const [tabIsMecz, setTabIsMecz] = useState(true);
+
   const game = useContext(GameContext);
   const round = useContext(RoundContext);
 
@@ -41,6 +68,21 @@ export function Main() {
       <Banner>
         <BannerContent />
       </Banner>
+      <MapBanner>{game.map ? game.map : ""}</MapBanner>
+      <TabsContainer>
+        <Tab
+          style={{ backgroundColor: tabIsMecz ? "white" : "rgba(0,0,0,0.2)" }}
+          onClick={() => setTabIsMecz(false)}
+        >
+          Runda
+        </Tab>
+        <Tab
+          style={{ backgroundColor: tabIsMecz ? "rgba(0,0,0,0.2)" : "white" }}
+          onClick={() => setTabIsMecz(true)}
+        >
+          Mecz
+        </Tab>
+      </TabsContainer>
       <Container>
         <SideRadar></SideRadar>
         <RadarContainer>

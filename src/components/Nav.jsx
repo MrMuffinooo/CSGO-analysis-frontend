@@ -60,7 +60,7 @@ export function Nav({ setGame, setRound }) {
 
       .then(function (myJson) {
         // console.log(myJson);
-
+        setRound({});
         setGame(myJson);
       });
   };

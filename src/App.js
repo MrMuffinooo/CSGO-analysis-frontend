@@ -13,7 +13,6 @@ const Container = styled.div`
 `;
 
 const Article = styled.article`
-  background-color: #fbc;
   flex-grow: 9;
 `;
 
@@ -29,9 +28,7 @@ function App() {
             <Main />
           </Article>
 
-          <Nav setGame={setGame} setRound={setRound}>
-            nav
-          </Nav>
+          <Nav setGame={setGame} setRound={setRound} />
         </RoundContext.Provider>
       </GameContext.Provider>
     </Container>
