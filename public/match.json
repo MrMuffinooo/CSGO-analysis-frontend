@@ -1,0 +1,78 @@
+{
+    "map": "de_mirage",
+    "roundsPlayed": 36,
+    "teams": {
+        "lastTSide": {
+            "name": "Team Liquid",
+            "players": [
+                {
+                    "name": "nitr0",
+                    "kills": 21,
+                    "assists": 0,
+                    "deaths": 12
+                },
+                {
+                    "name": "YEKINDAR",
+                    "kills": 18,
+                    "assists": 9,
+                    "deaths": 6
+                },
+                {
+                    "name": "NAF-FLY",
+                    "kills": 9,
+                    "assists": 7,
+                    "deaths": 19
+                },
+                {
+                    "name": "EliGE",
+                    "kills": 18,
+                    "assists": 4,
+                    "deaths": 16
+                },
+                {
+                    "name": "oSee",
+                    "kills": 28,
+                    "assists": 2,
+                    "deaths": 6
+                }
+            ],
+            "roundsWon": 19
+        },
+        "lastCTSide": {
+            "name": "Ninjas in Pyjamas",
+            "players": [
+                {
+                    "name": "Brollan",
+                    "kills": 19,
+                    "assists": 7,
+                    "deaths": 11
+                },
+                {
+                    "name": "REZ",
+                    "kills": 5,
+                    "assists": 3,
+                    "deaths": 17
+                },
+                {
+                    "name": "Plopski",
+                    "kills": 14,
+                    "assists": 0,
+                    "deaths": 12
+                },
+                {
+                    "name": "es3tag",
+                    "kills": 30,
+                    "assists": 2,
+                    "deaths": 15
+                },
+                {
+                    "name": "hampus",
+                    "kills": 14,
+                    "assists": 6,
+                    "deaths": 12
+                }
+            ],
+            "roundsWon": 17
+        }
+    }
+}

@@ -43,13 +43,13 @@ function Player({ no, hp, x, y, angle, team, fires }) {
     } else {
       if (team === "T") {
         if (fires) {
-          console.log(no + " FIRE");
+          // console.log(no + " FIRE");
           return tIconFire;
         }
         return tIcon;
       } else {
         if (fires) {
-          console.log(no + " FIRE");
+          // console.log(no + " FIRE");
           return ctIconFire;
         }
         return ctIcon;
@@ -60,7 +60,7 @@ function Player({ no, hp, x, y, angle, team, fires }) {
   const playerIcon = `url(${getPlayerIcon()})`;
 
   useEffect(() => {
-    console.log("Player " + no + " has " + hp + " HP");
+    // console.log("Player " + no + " has " + hp + " HP");
   }, [hp]);
 
   return (

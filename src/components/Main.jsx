@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { useContext } from "react";
 import styled from "styled-components";
 import map from "../assets/maps/de_mirage/radar.png";
-import { GameContext } from "./Context";
+import { GameContext } from "./contexts/GameContext";
 import { Controls } from "./Controls";
 import Player from "./Player";
 import Bomb from "./Bomb";
 import Radar from "./Radar";
+import { RoundContext } from "./contexts/RoundContext";
+import { BannerContent } from "./BannerContent";
 
 const Container = styled.div`
   display: flex;
@@ -14,7 +16,11 @@ const Container = styled.div`
 `;
 const Banner = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100px;
+  font-size: 32px;
+  font-weight: bold;
 `;
 
 const SideRadar = styled.div`
@@ -28,35 +34,38 @@ const RadarContainer = styled.div`
 export function Main() {
   const [tick, setTick] = useState(0);
   const game = useContext(GameContext);
+  const round = useContext(RoundContext);
 
   return (
     <div>
-      <Banner>NIP vs LIQ</Banner>
+      <Banner>
+        <BannerContent />
+      </Banner>
       <Container>
         <SideRadar></SideRadar>
         <RadarContainer>
           <Radar>
             <img src={map} width={"100%"} />
-            {game.players &&
-              game.players.map((e, i) => {
+            {round.players &&
+              round.players.map((e, i) => {
                 return (
                   <Player
                     key={i}
                     no={i}
-                    x={game[e].x[tick]}
-                    y={game[e].y[tick]}
-                    angle={game[e].a[tick]}
-                    hp={game[e].hp[tick]}
-                    team={game[e].team}
-                    fires={game[e].fires[tick]}
+                    x={round[e].x[tick]}
+                    y={round[e].y[tick]}
+                    angle={round[e].a[tick]}
+                    hp={round[e].hp[tick]}
+                    team={round[e].team}
+                    fires={round[e].fires[tick]}
                   />
                 );
               })}
-            {game.bomb && (
+            {round.bomb && (
               <Bomb
-                x={game.bomb.x[tick]}
-                y={game.bomb.y[tick]}
-                state={game.bomb.state[tick]}
+                x={round.bomb.x[tick]}
+                y={round.bomb.y[tick]}
+                state={round.bomb.state[tick]}
               />
             )}
           </Radar>
@@ -66,7 +75,7 @@ export function Main() {
       <Controls
         tick={tick}
         setTick={setTick}
-        len={game.length ? game.length : 100}
+        len={round.length ? round.length : 100}
       ></Controls>
     </div>
   );
