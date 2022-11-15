@@ -22,23 +22,21 @@ const ClickableDiv = styled.div`
   cursor: pointer;
 `;
 
-export function MatchListing({ children, no, open, game, id, setOpen }) {
+export function MatchListing({ children, no, open, game, id, setWhoIsOpen }) {
   //open - which listing is open
 
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     if (open == no) {
       setIsOpen(true);
+    } else if (isOpen) {
+      setIsOpen(false);
     }
+    console.log(open);
   }, [open]);
 
   const handleMatchClick = () => {
-    if (isOpen) {
-      setIsOpen(false);
-    } else {
-      setOpen(no);
-    }
-    console.log(open);
+    setWhoIsOpen(no);
   };
   const handleRoundClick = () => {};
 

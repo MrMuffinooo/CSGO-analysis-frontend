@@ -1,5 +1,4 @@
 export const getMatchesData = async (setGames) => {
-  console.log("here");
   fetch(
     "./matches.json",
 

@@ -38,7 +38,7 @@ export function Nav({ setGame, setRound }) {
               key={i}
               no={i}
               id={e.id}
-              setOpen={setWhoIsOpen}
+              setWhoIsOpen={setWhoIsOpen}
               open={whoIsOpen}
             >
               {e.name}
