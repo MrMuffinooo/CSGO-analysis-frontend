@@ -9,6 +9,7 @@ import Bomb from "./Bomb";
 import Radar from "./Radar";
 import { RoundContext } from "./contexts/RoundContext";
 import { BannerContent } from "./BannerContent";
+import { PlayerStatus } from "./PlayerStatus";
 
 const Container = styled.div`
   display: flex;
@@ -35,6 +36,9 @@ const MapBanner = styled.div`
 const SideRadar = styled.div`
   width: 200px;
   background-color: #aaa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 const RadarContainer = styled.div`
   width: calc(100% - 400px);
@@ -68,7 +72,11 @@ export function Main() {
       <Banner>
         <BannerContent />
       </Banner>
-      <MapBanner>{game.map ? game.map : ""}</MapBanner>
+      <MapBanner>
+        {game.map ? game.map : ""}
+        {"  "}
+        {tick}
+      </MapBanner>
       <TabsContainer>
         <Tab
           style={{ backgroundColor: tabIsMecz ? "white" : "rgba(0,0,0,0.2)" }}
@@ -84,16 +92,34 @@ export function Main() {
         </Tab>
       </TabsContainer>
       <Container>
-        <SideRadar></SideRadar>
+        <SideRadar>
+          {round.players &&
+            round.players
+              .filter((p) => {
+                return round[p].team == "T";
+              })
+              .map((e) => {
+                return (
+                  <PlayerStatus
+                    no={round[e].id}
+                    key={round[e].id}
+                    name={e}
+                    hp={round[e].hp[tick]}
+                    isLeft={true}
+                    isT={round[e].team == "T"}
+                  />
+                );
+              })}
+        </SideRadar>
         <RadarContainer>
           <Radar>
             <img src={map} width={"100%"} />
             {round.players &&
-              round.players.map((e, i) => {
+              round.players.map((e) => {
                 return (
                   <Player
-                    key={i}
-                    no={i}
+                    key={round[e].id}
+                    no={round[e].id}
                     x={round[e].x[tick]}
                     y={round[e].y[tick]}
                     angle={round[e].a[tick]}
@@ -112,7 +138,25 @@ export function Main() {
             )}
           </Radar>
         </RadarContainer>
-        <SideRadar>{tick}</SideRadar>
+        <SideRadar>
+          {round.players &&
+            round.players
+              .filter((p) => {
+                return round[p].team == "T";
+              })
+              .map((e) => {
+                return (
+                  <PlayerStatus
+                    no={round[e].id}
+                    key={round[e].id}
+                    name={e}
+                    hp={round[e].hp[tick]}
+                    isLeft={false}
+                    isT={round[e].team == "T"}
+                  />
+                );
+              })}
+        </SideRadar>
       </Container>
       <Controls
         tick={tick}

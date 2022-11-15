@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import styled from "styled-components";
+import { getMatchData } from "../utils/getMatch";
+import { getMatchesData } from "../utils/getMatches";
+import { getRoundData } from "../utils/getRound";
 import { GameContext } from "./contexts/GameContext";
 import { RoundContext } from "./contexts/RoundContext";
+import { MatchListing } from "./MatchListing";
 
 const Container = styled.div`
   min-width: 200px;
@@ -15,68 +19,31 @@ const UploadContainer = styled.div`
 const MatchesContainer = styled.div``;
 
 export function Nav({ setGame, setRound }) {
-  const getRoundData = () => {
-    fetch(
-      "./round.json",
-
-      {
-        headers: {
-          "Content-Type": "application/json",
-
-          Accept: "application/json",
-        },
-      }
-    )
-      .then(function (response) {
-        // console.log(response);
-
-        return response.json();
-      })
-
-      .then(function (myJson) {
-        // console.log(myJson);
-
-        setRound(myJson);
-      });
-  };
-
-  const getMatchData = () => {
-    fetch(
-      "./match.json",
-
-      {
-        headers: {
-          "Content-Type": "application/json",
-
-          Accept: "application/json",
-        },
-      }
-    )
-      .then(function (response) {
-        // console.log(response);
-
-        return response.json();
-      })
-
-      .then(function (myJson) {
-        // console.log(myJson);
-        setRound({});
-        setGame(myJson);
-      });
-  };
-
   const game = useContext(GameContext);
   const round = useContext(RoundContext);
+  const [games, setGames] = useState([]);
+  const [whoIsOpen, setWhoIsOpen] = useState(-1);
 
   return (
     <Container>
       <UploadContainer>upload</UploadContainer>
       <MatchesContainer>maches</MatchesContainer>
-      <button onClick={getMatchData}>Get match</button>
-      <button onClick={getRoundData}>Get round</button>
-      {game.roundsPlayed &&
-        [...Array(game.roundsPlayed).keys()].map((e, i) => {
-          return <div key={i}>{e + 1}</div>;
+      <button onClick={() => getMatchesData(setGames)}>Get matches</button>
+      <button onClick={() => getMatchData(setGame)}>Get match</button>
+      <button onClick={() => getRoundData(setRound)}>Get round</button>
+      {games &&
+        games.map((e, i) => {
+          return (
+            <MatchListing
+              key={i}
+              no={i}
+              id={e.id}
+              setOpen={setWhoIsOpen}
+              open={whoIsOpen}
+            >
+              {e.name}
+            </MatchListing>
+          );
         })}
     </Container>
   );
