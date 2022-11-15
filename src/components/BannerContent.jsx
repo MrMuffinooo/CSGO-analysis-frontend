@@ -18,9 +18,9 @@ export function BannerContent() {
 
   if (round.teams && game.teams) {
     const firstColor =
-      round.teams[game.teams.lastCTSide.name] == "T" ? "orange" : "blue";
+      round.teams[game.teams.lastCTSide.name] === "T" ? "orange" : "blue";
     const secondColor =
-      round.teams[game.teams.lastTSide.name] == "T" ? "orange" : "blue";
+      round.teams[game.teams.lastTSide.name] === "T" ? "orange" : "blue";
 
     return (
       <>

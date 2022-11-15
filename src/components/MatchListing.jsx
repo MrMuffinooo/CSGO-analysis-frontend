@@ -27,13 +27,13 @@ export function MatchListing({ children, no, open, game, id, setWhoIsOpen }) {
 
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
-    if (open == no) {
+    if (open === no) {
       setIsOpen(true);
     } else if (isOpen) {
       setIsOpen(false);
     }
     console.log(open);
-  }, [open]);
+  }, [open, no, isOpen]);
 
   const handleMatchClick = () => {
     setWhoIsOpen(no);

@@ -40,6 +40,7 @@ const SideRadar = styled.div`
   flex-direction: column;
   justify-content: center;
 `;
+
 const RadarContainer = styled.div`
   width: calc(100% - 400px);
 `;
@@ -94,26 +95,27 @@ export function Main() {
       <Container>
         <SideRadar>
           {round.players &&
-            round.players
-              .filter((p) => {
-                return round[p].team == "T";
+            game.teams &&
+            game.teams.lastCTSide.players
+              .sort((a, b) => {
+                return round[a.name].id - round[b.name].id;
               })
-              .map((e) => {
+              .map((p) => {
                 return (
                   <PlayerStatus
-                    no={round[e].id}
-                    key={round[e].id}
-                    name={e}
-                    hp={round[e].hp[tick]}
+                    no={round[p.name].id}
+                    key={round[p.name].id}
+                    name={p.name}
+                    hp={round[p.name].hp[tick]}
                     isLeft={true}
-                    isT={round[e].team == "T"}
+                    isT={round[p.name].team === "T"}
                   />
                 );
               })}
         </SideRadar>
         <RadarContainer>
           <Radar>
-            <img src={map} width={"100%"} />
+            <img src={map} alt={"radar"} width={"100%"} />
             {round.players &&
               round.players.map((e) => {
                 return (
@@ -140,19 +142,20 @@ export function Main() {
         </RadarContainer>
         <SideRadar>
           {round.players &&
-            round.players
-              .filter((p) => {
-                return round[p].team == "T";
+            game.teams &&
+            game.teams.lastTSide.players
+              .sort((a, b) => {
+                return round[a.name].id - round[b.name].id;
               })
-              .map((e) => {
+              .map((p) => {
                 return (
                   <PlayerStatus
-                    no={round[e].id}
-                    key={round[e].id}
-                    name={e}
-                    hp={round[e].hp[tick]}
+                    no={round[p.name].id}
+                    key={round[p.name].id}
+                    name={p.name}
+                    hp={round[p.name].hp[tick]}
                     isLeft={false}
-                    isT={round[e].team == "T"}
+                    isT={round[p.name].team === "T"}
                   />
                 );
               })}

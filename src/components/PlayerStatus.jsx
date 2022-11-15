@@ -3,28 +3,52 @@ import styled from "styled-components";
 
 const Container = styled.div`
   height: 50px;
+  position: relative;
 `;
 
-const RightDiv = styled(Container)`
-  text-align: left;
+const NoContainer = styled.div`
+  width: 25px;
+  text-align: center;
 `;
 
-const LeftDiv = styled(Container)`
-  text-align: right;
+const TopHalf = styled.div`
+  height: 50%;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 2;
+`;
+
+const HealthIndicator = styled.div`
+  position: absolute;
+  height: 100%;
+  top: 0;
+  z-index: 0;
+
+  transition-property: width;
+  transition-timing-function: ease-out;
+  transition-duration: 200ms; // same as in Controls.jsx
 `;
 
 export function PlayerStatus({ no, hp, name, isLeft, isT }) {
-  if (isLeft) {
-    return (
-      <LeftDiv>
-        {name} {no}
-      </LeftDiv>
-    );
-  }
-
   return (
-    <RightDiv>
-      {no} {name}
-    </RightDiv>
+    <Container>
+      <TopHalf
+        style={{
+          flexDirection: isLeft ? "row" : "row-reverse",
+        }}
+      >
+        <div>{name}</div>
+        <NoContainer> {no}</NoContainer>
+      </TopHalf>
+      <HealthIndicator
+        style={{
+          width: hp + "%",
+          left: isLeft ? "inherit" : "0",
+          right: isLeft ? "0" : "inherit",
+          backgroundColor: isT ? "orange" : "blue",
+        }}
+      />
+    </Container>
   );
 }
