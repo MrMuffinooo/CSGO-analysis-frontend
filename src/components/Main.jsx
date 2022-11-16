@@ -10,6 +10,7 @@ import Radar from "./Radar";
 import { RoundContext } from "./contexts/RoundContext";
 import { BannerContent } from "./BannerContent";
 import { PlayerStatus } from "./PlayerStatus";
+import { RoundInfo } from "./RoundInfo";
 
 const Container = styled.div`
   display: flex;
@@ -92,6 +93,7 @@ export function Main() {
           Mecz
         </Tab>
       </TabsContainer>
+      <RoundInfo />
       <Container>
         <SideRadar>
           {round.players &&
