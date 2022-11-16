@@ -1,11 +1,19 @@
 import styled from "@emotion/styled";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import arrow from "../assets/icons/arrow.png";
+import { GameContext } from "./contexts/GameContext";
+import { RoundListing } from "./RoundListing";
 
 const ListingContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+`;
+
+const RoundListingContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 `;
 
 const Img = styled.img`
@@ -22,8 +30,20 @@ const ClickableDiv = styled.div`
   cursor: pointer;
 `;
 
-export function MatchListing({ children, no, open, game, id, setWhoIsOpen }) {
+export function MatchListing({
+  children,
+  no,
+  open,
+  id,
+  setWhoIsOpen,
+  getMatch,
+  getRound,
+  selectedRound,
+  setSelectedRound,
+}) {
   //open - which listing is open
+
+  const game = useContext(GameContext);
 
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
@@ -32,13 +52,15 @@ export function MatchListing({ children, no, open, game, id, setWhoIsOpen }) {
     } else if (isOpen) {
       setIsOpen(false);
     }
-    console.log(open);
   }, [open, no, isOpen]);
 
   const handleMatchClick = () => {
-    setWhoIsOpen(no);
+    if (!isOpen) {
+      setWhoIsOpen(no);
+      getMatch();
+      setSelectedRound(-1);
+    }
   };
-  const handleRoundClick = () => {};
 
   return (
     <ListingContainer>
@@ -52,11 +74,21 @@ export function MatchListing({ children, no, open, game, id, setWhoIsOpen }) {
         <ClickableDiv onClick={handleMatchClick}>
           {no} {children}
         </ClickableDiv>
-        {isOpen &&
-          game &&
-          [...Array(game.roundsPlayed).keys()].map((e, i) => {
-            return <div>{e + 1}</div>;
-          })}
+        <RoundListingContainer>
+          {isOpen &&
+            game &&
+            [...Array(game.roundsPlayed).keys()].map((e) => {
+              return (
+                <RoundListing
+                  key={e}
+                  no={e}
+                  selectedRound={selectedRound}
+                  setSelectedRound={setSelectedRound}
+                  getRound={getRound}
+                />
+              );
+            })}
+        </RoundListingContainer>
       </div>
     </ListingContainer>
   );
