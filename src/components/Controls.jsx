@@ -1,5 +1,5 @@
 import { Slider } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const PlayerContainer = styled.div`
@@ -8,7 +8,6 @@ const PlayerContainer = styled.div`
 `;
 
 export function Controls({ tick, setTick, len }) {
-  // const tickContext = useContext(TickContext);
   const [isPlaying, setIsPlaying] = useState(false);
 
   var id = null;

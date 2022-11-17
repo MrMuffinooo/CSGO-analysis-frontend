@@ -3,7 +3,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import { GameContext } from "./contexts/GameContext";
 import { Controls } from "./Controls";
-import Radar from "./Radar";
+import { Radar } from "./Radar";
 import { RoundContext } from "./contexts/RoundContext";
 import { BannerContent } from "./BannerContent";
 import { RoundInfo } from "./RoundInfo";
@@ -31,23 +31,6 @@ const MapBanner = styled.div`
   height: 70px;
   font-size: 32px;
   font-weight: bold;
-`;
-
-const TabsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  height: 60px;
-  font-size: 32px;
-  font-weight: bold;
-`;
-
-const Tab = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 50%;
-  cursor: pointer;
 `;
 
 export function Main() {
