@@ -6,7 +6,7 @@ import { RoundListing } from "./RoundListing";
 
 const ListingContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
 `;
 
@@ -67,7 +67,10 @@ export function MatchListing({
       <ClickableDiv onClick={handleMatchClick}>
         <Img
           src={arrow}
-          style={{ transform: isOpen ? "rotate(90deg)" : "none" }}
+          style={{
+            transform: isOpen ? "rotate(90deg)" : "none",
+            marginTop: "3px",
+          }}
         />
       </ClickableDiv>
       <div>

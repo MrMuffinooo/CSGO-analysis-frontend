@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import { useContext } from "react";
 import styled from "styled-components";
-import map from "../assets/maps/de_mirage/radar.png";
 import { GameContext } from "./contexts/GameContext";
 import { Controls } from "./Controls";
-import Player from "./Player";
-import Bomb from "./Bomb";
 import Radar from "./Radar";
 import { RoundContext } from "./contexts/RoundContext";
 import { BannerContent } from "./BannerContent";
-import { PlayerStatus } from "./PlayerStatus";
 import { RoundInfo } from "./RoundInfo";
+import { SideRadar } from "./SideRadar";
+import { Tabs } from "./Tabs";
 
 const Container = styled.div`
   display: flex;
   min-height: 500px;
+  justify-content: center;
 `;
 const Banner = styled.div`
   display: flex;
@@ -34,17 +33,6 @@ const MapBanner = styled.div`
   font-weight: bold;
 `;
 
-const SideRadar = styled.div`
-  width: 200px;
-  background-color: #aaa;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const RadarContainer = styled.div`
-  width: calc(100% - 400px);
-`;
 const TabsContainer = styled.div`
   display: flex;
   align-items: center;
@@ -79,95 +67,22 @@ export function Main() {
         {"  "}
         {tick}
       </MapBanner>
-      <TabsContainer>
-        <Tab
-          style={{ backgroundColor: tabIsMecz ? "white" : "rgba(0,0,0,0.2)" }}
-          onClick={() => setTabIsMecz(false)}
-        >
-          Runda
-        </Tab>
-        <Tab
-          style={{ backgroundColor: tabIsMecz ? "rgba(0,0,0,0.2)" : "white" }}
-          onClick={() => setTabIsMecz(true)}
-        >
-          Mecz
-        </Tab>
-      </TabsContainer>
+      <Tabs
+        tabIsMecz={tabIsMecz}
+        handleMeczClick={() => setTabIsMecz(true)}
+        handleRundaClick={() => setTabIsMecz(false)}
+      />
       <RoundInfo />
       <Container>
-        <SideRadar>
-          {round.players &&
-            game.teams &&
-            game.teams.lastCTSide.players
-              .sort((a, b) => {
-                return round[a.name].id - round[b.name].id;
-              })
-              .map((p) => {
-                return (
-                  <PlayerStatus
-                    no={round[p.name].id}
-                    key={round[p.name].id}
-                    name={p.name}
-                    hp={round[p.name].hp[tick]}
-                    isLeft={true}
-                    isT={round[p.name].team === "T"}
-                  />
-                );
-              })}
-        </SideRadar>
-        <RadarContainer>
-          <Radar>
-            <img src={map} alt={"radar"} width={"100%"} />
-            {round.players &&
-              round.players.map((e) => {
-                return (
-                  <Player
-                    key={round[e].id}
-                    no={round[e].id}
-                    x={round[e].x[tick]}
-                    y={round[e].y[tick]}
-                    angle={round[e].a[tick]}
-                    hp={round[e].hp[tick]}
-                    team={round[e].team}
-                    fires={round[e].fires[tick]}
-                  />
-                );
-              })}
-            {round.bomb && (
-              <Bomb
-                x={round.bomb.x[tick]}
-                y={round.bomb.y[tick]}
-                state={round.bomb.state[tick]}
-              />
-            )}
-          </Radar>
-        </RadarContainer>
-        <SideRadar>
-          {round.players &&
-            game.teams &&
-            game.teams.lastTSide.players
-              .sort((a, b) => {
-                return round[a.name].id - round[b.name].id;
-              })
-              .map((p) => {
-                return (
-                  <PlayerStatus
-                    no={round[p.name].id}
-                    key={round[p.name].id}
-                    name={p.name}
-                    hp={round[p.name].hp[tick]}
-                    isLeft={false}
-                    isT={round[p.name].team === "T"}
-                  />
-                );
-              })}
-        </SideRadar>
+        <SideRadar isLeft={true} tick={tick} />
+        <Radar tick={tick} />
+        <SideRadar isLeft={false} tick={tick} />
       </Container>
       <Controls
         tick={tick}
         setTick={setTick}
         len={round.length ? round.length : 100}
-      ></Controls>
+      />
     </div>
   );
 }

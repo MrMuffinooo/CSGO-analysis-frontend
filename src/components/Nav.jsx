@@ -8,7 +8,7 @@ import { MatchListing } from "./MatchListing";
 
 const Container = styled.div`
   min-width: 200px;
-  max-width: 400px;
+  max-width: 300px;
   flex-grow: 2;
 `;
 

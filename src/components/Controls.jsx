@@ -17,7 +17,7 @@ export function Controls({ tick, setTick, len }) {
     if (isPlaying) {
       id = setInterval(() => {
         counter += 1;
-        if (counter < len) {
+        if (counter < len - 1) {
           setTick((tick) => tick + 1);
         } else {
           setIsPlaying(false);
