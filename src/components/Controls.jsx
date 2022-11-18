@@ -5,6 +5,11 @@ import styled from "styled-components";
 const PlayerContainer = styled.div`
   display: flex;
   justify-content: center;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 100;
 `;
 
 export function Controls({ tick, setTick, len }) {
