@@ -9,6 +9,7 @@ import { BannerContent } from "./BannerContent";
 import { RoundInfo } from "./RoundInfo";
 import { SideRadar } from "./SideRadar";
 import { Tabs } from "./Tabs";
+import { PredictionBar } from "./PredictionBar";
 
 const Container = styled.div`
   display: flex;
@@ -56,6 +57,7 @@ export function Main() {
         handleRundaClick={() => setTabIsMecz(false)}
       />
       <RoundInfo />
+      <PredictionBar tick={tick} />
       <Container>
         <SideRadar isLeft={true} tick={tick} />
         <Radar tick={tick} />
