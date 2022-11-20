@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import { COLOR_CT, COLOR_T } from "../utils/constans";
 import { GameContext } from "./contexts/GameContext";
 import { RoundContext } from "./contexts/RoundContext";
 
@@ -36,9 +37,9 @@ export function RoundInfo() {
             : "row",
       }}
     >
-      <Info style={{ color: "orange" }}>{round.tScore}</Info>
+      <Info style={{ color: COLOR_T }}>{round.tScore}</Info>
       <Info style={{ fontSize: 42 }}>Runda {round.roundNumber}</Info>
-      <Info style={{ color: "blue" }}>{round.tScore}</Info>
+      <Info style={{ color: COLOR_CT }}>{round.tScore}</Info>
     </Container>
   );
 }

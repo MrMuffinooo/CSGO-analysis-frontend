@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { COLOR_CT, COLOR_T } from "../utils/constans";
 
 const Container = styled.div`
   height: 50px;
@@ -46,7 +47,7 @@ export function PlayerStatus({ no, hp, name, isLeft, isT }) {
           width: hp + "%",
           left: isLeft ? "inherit" : "0",
           right: isLeft ? "0" : "inherit",
-          backgroundColor: isT ? "orange" : "blue",
+          backgroundColor: isT ? COLOR_T : COLOR_CT,
         }}
       />
     </Container>

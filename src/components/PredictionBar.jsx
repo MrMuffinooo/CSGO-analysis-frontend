@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, { useContext } from "react";
 import { RoundContext } from "./contexts/RoundContext";
+import { COLOR_CT, COLOR_T } from "../utils/constans";
 
 const Container = styled.div`
   height: 75px;
@@ -8,7 +9,7 @@ const Container = styled.div`
   justify-content: space-between;
   font-size: 50px;
   font-weight: bold;
-  background-color: orange;
+  background-color: ${COLOR_T};
   position: relative;
   color: white;
 `;
@@ -18,7 +19,7 @@ const Bar = styled.div`
   position: absolute;
   left: 0;
   top: 0;
-  background-color: blue;
+  background-color: ${COLOR_CT};
   width: 50%;
   transition-property: width;
   transition-timing-function: ease-out;

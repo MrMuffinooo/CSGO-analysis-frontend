@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import React, { useContext } from "react";
+import { COLOR_CT, COLOR_T } from "../utils/constans";
 import { GameContext } from "./contexts/GameContext";
 import { RoundContext } from "./contexts/RoundContext";
 
@@ -18,9 +19,9 @@ export function BannerContent() {
 
   if (round.teams && game.teams) {
     const firstColor =
-      round.teams[game.teams.lastCTSide.name] === "T" ? "orange" : "blue";
+      round.teams[game.teams.lastCTSide.name] === "T" ? COLOR_T : COLOR_CT;
     const secondColor =
-      round.teams[game.teams.lastTSide.name] === "T" ? "orange" : "blue";
+      round.teams[game.teams.lastTSide.name] === "T" ? COLOR_T : COLOR_CT;
 
     return (
       <>
@@ -38,11 +39,11 @@ export function BannerContent() {
   } else if (game.teams) {
     return (
       <>
-        <BannerChild style={{ color: "blue" }}>
+        <BannerChild style={{ color: COLOR_CT }}>
           {game.teams.lastCTSide.name}
         </BannerChild>
         <BannerChild>vs</BannerChild>
-        <BannerChild style={{ color: "orange" }}>
+        <BannerChild style={{ color: COLOR_T }}>
           {game.teams.lastTSide.name}
         </BannerChild>
       </>
