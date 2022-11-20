@@ -1,6 +1,7 @@
 import { Slider } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { TICK_LENGTH } from "../utils/constans";
 
 const PlayerContainer = styled.div`
   display: flex;
@@ -27,7 +28,7 @@ export function Controls({ tick, setTick, len }) {
           setIsPlaying(false);
           clearInterval(id);
         }
-      }, 200); //same as in Player.jsx
+      }, TICK_LENGTH); //same as in Player.jsx
     }
     return () => {
       clearInterval(id);

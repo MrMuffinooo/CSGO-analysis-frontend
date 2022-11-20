@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React, { useContext } from "react";
 import { RoundContext } from "./contexts/RoundContext";
-import { COLOR_CT, COLOR_T } from "../utils/constans";
+import { COLOR_CT, COLOR_T, TICK_LENGTH } from "../utils/constans";
 
 const Container = styled.div`
   height: 75px;
@@ -23,7 +23,7 @@ const Bar = styled.div`
   width: 50%;
   transition-property: width;
   transition-timing-function: ease-out;
-  transition-duration: 200ms; // same as in Controls.jsx
+  transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
 
   z-index: 0;
 `;

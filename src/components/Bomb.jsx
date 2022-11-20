@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import bomb from "../assets/icons/bomb-planted.png";
 import defused from "../assets/icons/bomb-defused.png";
 import { GameContext } from "./contexts/GameContext";
 import { getMapMeta } from "../utils/getMapMeta";
+import { TICK_LENGTH } from "../utils/constans";
 
 const BombIndicator = styled.div`
   background-position: center;
@@ -17,7 +18,7 @@ const BombIndicator = styled.div`
   transition-property: left, bottom, transform;
   transition-timing-function: linear;
   transform-origin: center;
-  transition-duration: 200ms; // same as in Controls.jsx
+  transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
 `;
 
 function Player({ x, y, state }) {

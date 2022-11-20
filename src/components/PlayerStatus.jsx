@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { COLOR_CT, COLOR_T } from "../utils/constans";
+import { COLOR_CT, COLOR_T, TICK_LENGTH } from "../utils/constans";
 
 const Container = styled.div`
   height: 50px;
@@ -28,7 +28,7 @@ const HealthIndicator = styled.div`
 
   transition-property: width;
   transition-timing-function: ease-out;
-  transition-duration: 200ms; // same as in Controls.jsx
+  transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
 `;
 
 export function PlayerStatus({ no, hp, name, isLeft, isT }) {

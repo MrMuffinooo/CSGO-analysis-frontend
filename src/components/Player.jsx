@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import tIcon from "../assets/icons/tIcon.png";
 import tIconFire from "../assets/icons/tIcon_fire.png";
@@ -8,6 +8,7 @@ import ctIconFire from "../assets/icons/ctIcon_fire.png";
 import ctDead from "../assets/icons/ctDead.png";
 import { GameContext } from "./contexts/GameContext";
 import { getMapMeta } from "../utils/getMapMeta.jsx";
+import { TICK_LENGTH } from "../utils/constans";
 
 const PlayerIndicator = styled.div`
   width: 20px;
@@ -23,7 +24,7 @@ const PlayerIndicator = styled.div`
   transition-property: left, bottom, transform;
   transition-timing-function: linear;
   transform-origin: center;
-  transition-duration: 200ms; // same as in Controls.jsx
+  transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
 `;
 
 function Player({ no, hp, x, y, angle, team, fires }) {
