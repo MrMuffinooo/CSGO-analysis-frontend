@@ -46,6 +46,7 @@ const Middle = styled.div`
 `;
 
 export function PredictionBar({ tick }) {
+  //TODO switch sides
   const round = useContext(RoundContext);
 
   if (!round.CTpredictions) {

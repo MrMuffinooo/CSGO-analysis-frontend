@@ -1,20 +1,27 @@
 import React, { useRef } from "react";
 import { useContext } from "react";
-import map from "../assets/maps/de_mirage/radar.png";
 import { RoundContext } from "./contexts/RoundContext";
 import Player from "./Player";
 import Bomb from "./Bomb";
+import { GameContext } from "./contexts/GameContext";
 
 export function Radar({ tick }) {
   const ref = useRef(null);
   const round = useContext(RoundContext);
+  const game = useContext(GameContext);
   // useEffect(() => {
   //   console.log("width", ref.current ? ref.current.offsetWidth : 0);
   // }, [ref.current]);
 
   return (
     <div ref={ref} style={{ width: "1024px", position: "relative" }}>
-      <img src={map} alt={"radar"} width={"100%"} />
+      {game.map && (
+        <img
+          src={require(`../assets/maps/${game.map}/radar.png`)}
+          alt={"radar"}
+          width={"100%"}
+        />
+      )}
       {round.players &&
         round.players.map((e) => {
           return (
