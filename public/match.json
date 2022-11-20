@@ -1,78 +1,78 @@
 {
-    "map": "de_mirage",
-    "roundsPlayed": 36,
+    "map": "de_nuke",
+    "roundsPlayed": 14,
     "teams": {
         "lastTSide": {
-            "name": "Team Liquid",
+            "name": "Complexity",
             "players": [
                 {
-                    "name": "nitr0",
+                    "name": "JT",
                     "kills": 21,
                     "assists": 0,
                     "deaths": 12
                 },
                 {
-                    "name": "YEKINDAR",
+                    "name": "FaNg",
                     "kills": 18,
                     "assists": 9,
                     "deaths": 6
                 },
                 {
-                    "name": "NAF-FLY",
+                    "name": "floppy",
                     "kills": 9,
                     "assists": 7,
                     "deaths": 19
                 },
                 {
-                    "name": "EliGE",
+                    "name": "Grim",
                     "kills": 18,
                     "assists": 4,
                     "deaths": 16
                 },
                 {
-                    "name": "oSee",
+                    "name": "hallzerk",
                     "kills": 28,
                     "assists": 2,
                     "deaths": 6
                 }
             ],
-            "roundsWon": 19
+            "roundsWon": 9
         },
         "lastCTSide": {
-            "name": "Ninjas in Pyjamas",
+            "name": "fnatic",
             "players": [
                 {
-                    "name": "Brollan",
+                    "name": "FASHR",
                     "kills": 19,
                     "assists": 7,
                     "deaths": 11
                 },
                 {
-                    "name": "REZ",
+                    "name": "mezii",
                     "kills": 5,
                     "assists": 3,
                     "deaths": 17
                 },
                 {
-                    "name": "Plopski",
+                    "name": "roeJ",
                     "kills": 14,
                     "assists": 0,
                     "deaths": 12
                 },
                 {
-                    "name": "es3tag",
+                    "name": "Peppzor",
                     "kills": 30,
                     "assists": 2,
                     "deaths": 15
                 },
                 {
-                    "name": "hampus",
+                    "name": "nicoodoz",
                     "kills": 14,
                     "assists": 6,
                     "deaths": 12
                 }
             ],
-            "roundsWon": 17
+            "roundsWon": 5
         }
     }
 }

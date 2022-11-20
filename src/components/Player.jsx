@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import tIcon from "../assets/icons/tIcon.png";
 import tIconFire from "../assets/icons/tIcon_fire.png";
@@ -6,6 +6,8 @@ import tDead from "../assets/icons/tDead.png";
 import ctIcon from "../assets/icons/ctIcon.png";
 import ctIconFire from "../assets/icons/ctIcon_fire.png";
 import ctDead from "../assets/icons/ctDead.png";
+import { GameContext } from "./contexts/GameContext";
+import { getMapMeta } from "../utils/getMapMeta.jsx";
 
 const PlayerIndicator = styled.div`
   width: 20px;
@@ -25,11 +27,20 @@ const PlayerIndicator = styled.div`
 `;
 
 function Player({ no, hp, x, y, angle, team, fires }) {
-  const RESOLUTION = 5.02; //TODO dynamic
-  const OFFSETX = 3240;
-  const OFFSETY = 3410;
-  const xPos = (x + OFFSETX) / RESOLUTION - 10;
-  const yPos = (y + OFFSETY) / RESOLUTION - 12;
+  const game = useContext(GameContext);
+
+  const [resolution, setResolution] = useState(5.0);
+  const [offsetX, setOffsetX] = useState(2500);
+  const [offsetY, setOffsetY] = useState(2500);
+
+  if (game.map) {
+    getMapMeta(game.map, setResolution, setOffsetX, setOffsetY);
+  } else {
+    return;
+  }
+
+  const xPos = (x + offsetX) / resolution - 10;
+  const yPos = (y + offsetY) / resolution - 12;
   const fixAngle = -angle + 90;
   const rot = hp !== 0 ? "rotate(" + fixAngle + "deg)" : "none";
 
@@ -59,9 +70,9 @@ function Player({ no, hp, x, y, angle, team, fires }) {
 
   const playerIcon = `url(${getPlayerIcon()})`;
 
-  useEffect(() => {
-    // console.log("Player " + no + " has " + hp + " HP");
-  }, [hp]);
+  // useEffect(() => {
+  //   // console.log("Player " + no + " has " + hp + " HP");
+  // }, [hp]);
 
   return (
     <PlayerIndicator

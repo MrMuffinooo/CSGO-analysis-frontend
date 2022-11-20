@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import bomb from "../assets/icons/bomb-planted.png";
 import defused from "../assets/icons/bomb-defused.png";
+import { GameContext } from "./contexts/GameContext";
+import { getMapMeta } from "../utils/getMapMeta";
 
 const BombIndicator = styled.div`
   background-position: center;
@@ -19,11 +21,20 @@ const BombIndicator = styled.div`
 `;
 
 function Player({ x, y, state }) {
-  const RESOLUTION = 5.02; //TODO dynamic
-  const OFFSETX = 3240;
-  const OFFSETY = 3410;
-  const xPos = (x + OFFSETX) / RESOLUTION - 3;
-  const yPos = (y + OFFSETY) / RESOLUTION - 10;
+  const game = useContext(GameContext);
+
+  const [resolution, setResolution] = useState(5.0);
+  const [offsetX, setOffsetX] = useState(2500);
+  const [offsetY, setOffsetY] = useState(2500);
+
+  if (game.map) {
+    getMapMeta(game.map, setResolution, setOffsetX, setOffsetY);
+  } else {
+    return;
+  }
+
+  const xPos = (x + offsetX) / resolution - 3;
+  const yPos = (y + offsetY) / resolution - 10;
 
   const bombIcon = `url(${state < 2 ? bomb : defused})`;
 
