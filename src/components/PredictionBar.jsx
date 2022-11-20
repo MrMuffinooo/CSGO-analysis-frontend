@@ -34,6 +34,7 @@ const PercentContainer = styled.div`
   align-items: center;
   margin: 0 20px;
   mix-blend-mode: difference;
+  width: 150px;
 
   z-index: 1;
 `;
