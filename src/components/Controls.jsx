@@ -2,6 +2,7 @@ import { Slider } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { TICK_LENGTH } from "../utils/constans";
+import { Predictions } from "./Predictions";
 
 const PlayerContainer = styled.div`
   display: flex;
@@ -11,6 +12,45 @@ const PlayerContainer = styled.div`
   width: 100%;
   background-color: white;
   z-index: 100;
+`;
+
+const Indicator = styled.div`
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 100%;
+  width: 4px;
+  position: absolute;
+  top: 0;
+  border: none;
+
+  transition-property: left;
+  transition-timing-function: linear;
+  transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
+`;
+
+const Divider = styled.div`
+  height: calc(50% - 1px);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  border: none;
+  border-bottom: 2px dashed rgba(0, 0, 0, 0.1);
+`;
+
+const PredictionContainer = styled.div`
+  width: 100%;
+  height: 50px;
+  display: flex;
+  border: none;
+  position: relative;
+  overflow: hidden;
+`;
+const Column = styled.div`
+  flex-grow: 1;
+  border: none;
+`;
+
+const Button = styled.button`
+  align-self: center;
 `;
 
 export function Controls({ tick, setTick, len }) {
@@ -37,14 +77,21 @@ export function Controls({ tick, setTick, len }) {
 
   return (
     <PlayerContainer>
-      <button onClick={() => setIsPlaying(!isPlaying)}>PLAY</button>
-      <Slider
-        value={tick}
-        step={1}
-        min={0}
-        max={len - 1}
-        onChange={(e, v) => setTick(v)}
-      />
+      <Button onClick={() => setIsPlaying(!isPlaying)}>PLAY</Button>
+      <Column>
+        <Slider
+          value={tick}
+          step={1}
+          min={0}
+          max={len - 1}
+          onChange={(e, v) => setTick(v)}
+        />
+        <PredictionContainer>
+          <Predictions />
+          <Indicator style={{ left: `${(tick * 100) / len}%` }} />
+          <Divider />
+        </PredictionContainer>
+      </Column>
     </PlayerContainer>
   );
 }
