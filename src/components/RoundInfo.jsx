@@ -39,7 +39,7 @@ export function RoundInfo() {
     >
       <Info style={{ color: COLOR_T }}>{round.tScore}</Info>
       <Info style={{ fontSize: 42 }}>Runda {round.roundNumber}</Info>
-      <Info style={{ color: COLOR_CT }}>{round.tScore}</Info>
+      <Info style={{ color: COLOR_CT }}>{round.ctScore}</Info>
     </Container>
   );
 }
