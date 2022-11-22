@@ -27,21 +27,31 @@ const PlayerIndicator = styled.div`
   transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
 `;
 
-function Player({ no, hp, x, y, angle, team, fires }) {
+function Player({ no, hp, x, y, angle, team, fires, slice }) {
   const game = useContext(GameContext);
 
   const [resolution, setResolution] = useState(5.0);
   const [offsetX, setOffsetX] = useState(2500);
   const [offsetY, setOffsetY] = useState(2500);
 
+  const [sliceOffsetX, setSliceOffsetX] = useState(1.0);
+  const [sliceOffsetY, setSliceOffsetY] = useState(1.0);
+
   if (game.map) {
-    getMapMeta(game.map, setResolution, setOffsetX, setOffsetY);
+    getMapMeta(
+      game.map,
+      setResolution,
+      setOffsetX,
+      setOffsetY,
+      setSliceOffsetX,
+      setSliceOffsetY
+    );
   } else {
     return;
   }
 
-  const xPos = (x + offsetX) / resolution - 10;
-  const yPos = (y + offsetY) / resolution - 12;
+  const xPos = (x + offsetX - (slice ? sliceOffsetX : 0)) / resolution - 10;
+  const yPos = (y + offsetY - (slice ? sliceOffsetY : 0)) / resolution - 12;
   const fixAngle = -angle + 90;
   const rot = hp !== 0 ? "rotate(" + fixAngle + "deg)" : "none";
 

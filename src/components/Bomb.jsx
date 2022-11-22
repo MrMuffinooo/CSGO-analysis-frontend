@@ -21,21 +21,31 @@ const BombIndicator = styled.div`
   transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
 `;
 
-function Player({ x, y, state }) {
+function Player({ x, y, state, slice }) {
   const game = useContext(GameContext);
 
   const [resolution, setResolution] = useState(5.0);
   const [offsetX, setOffsetX] = useState(2500);
   const [offsetY, setOffsetY] = useState(2500);
 
+  const [sliceOffsetX, setSliceOffsetX] = useState(1.0);
+  const [sliceOffsetY, setSliceOffsetY] = useState(1.0);
+
   if (game.map) {
-    getMapMeta(game.map, setResolution, setOffsetX, setOffsetY);
+    getMapMeta(
+      game.map,
+      setResolution,
+      setOffsetX,
+      setOffsetY,
+      setSliceOffsetX,
+      setSliceOffsetY
+    );
   } else {
     return;
   }
 
-  const xPos = (x + offsetX) / resolution - 3;
-  const yPos = (y + offsetY) / resolution - 10;
+  const xPos = (x + offsetX - (slice ? sliceOffsetX : 0)) / resolution - 3;
+  const yPos = (y + offsetY - (slice ? sliceOffsetY : 0)) / resolution - 10;
 
   const bombIcon = `url(${state < 2 ? bomb : defused})`;
 

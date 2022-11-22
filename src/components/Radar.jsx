@@ -34,6 +34,7 @@ export function Radar({ tick }) {
               hp={round[e].hp[tick]}
               team={round[e].team}
               fires={round[e].fires[tick]}
+              slice={round[e].radarSlice[tick]}
             />
           );
         })}
@@ -41,6 +42,7 @@ export function Radar({ tick }) {
         <Bomb
           x={round.bomb.x[tick]}
           y={round.bomb.y[tick]}
+          slice={round.bomb.radarSlice[tick]}
           state={round.bomb.state[tick]}
         />
       )}
