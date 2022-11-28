@@ -4,6 +4,8 @@ import tIcon from "../assets/icons/tIcon.png";
 import tIconFire from "../assets/icons/tIcon_fire.png";
 import tDead from "../assets/icons/tDead.png";
 import ctIcon from "../assets/icons/ctIcon.png";
+import ctFlashIcon from "../assets/icons/ctFlashIcon.png";
+import tFlashIcon from "../assets/icons/tFlashIcon.png";
 import ctIconFire from "../assets/icons/ctIcon_fire.png";
 import ctDead from "../assets/icons/ctDead.png";
 import { GameContext } from "./contexts/GameContext";
@@ -27,7 +29,7 @@ const PlayerIndicator = styled.div`
   transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
 `;
 
-function Player({ no, hp, x, y, angle, team, fires, slice }) {
+function Player({ no, hp, x, y, angle, team, fires, slice, isBlinded }) {
   const game = useContext(GameContext);
 
   const [resolution, setResolution] = useState(5.0);
@@ -64,12 +66,19 @@ function Player({ no, hp, x, y, angle, team, fires, slice }) {
       }
     } else {
       if (team === "T") {
+        if (isBlinded) {
+          return tFlashIcon;
+        }
+
         if (fires) {
           // console.log(no + " FIRE");
           return tIconFire;
         }
         return tIcon;
       } else {
+        if (isBlinded) {
+          return ctFlashIcon;
+        }
         if (fires) {
           // console.log(no + " FIRE");
           return ctIconFire;

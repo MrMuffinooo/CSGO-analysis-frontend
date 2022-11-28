@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import bomb from "../assets/icons/bomb-planted.png";
+import bomb from "../assets/icons/bomb-dropped.png";
 import defused from "../assets/icons/bomb-defused.png";
+import planted from "../assets/icons/bomb-planted.png";
 import { GameContext } from "./contexts/GameContext";
 import { getMapMeta } from "../utils/getMapMeta";
 import { TICK_LENGTH } from "../utils/constans";
@@ -47,7 +48,9 @@ function Player({ x, y, state, slice }) {
   const xPos = (x + offsetX - (slice ? sliceOffsetX : 0)) / resolution - 3;
   const yPos = (y + offsetY - (slice ? sliceOffsetY : 0)) / resolution - 10;
 
-  const bombIcon = `url(${state < 2 ? bomb : defused})`;
+  const bombIcon = `url(${
+    state === 0 ? bomb : state === 1 ? planted : defused
+  })`;
 
   return (
     <BombIndicator

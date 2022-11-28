@@ -35,6 +35,7 @@ export function Radar({ tick }) {
               team={round[e].team}
               fires={round[e].fires[tick]}
               slice={round[e].radarSlice[tick]}
+              isBlinded={round[e].isBlinded[tick]}
             />
           );
         })}
