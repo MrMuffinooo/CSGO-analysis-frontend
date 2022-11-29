@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { TICK_LENGTH } from "../utils/constans";
 import { Predictions } from "./Predictions";
+import arrow from "../assets/icons/arrow.png";
+import pause from "../assets/icons/pause.png";
 
 const PlayerContainer = styled.div`
   display: flex;
@@ -50,7 +52,10 @@ const Column = styled.div`
 `;
 
 const Button = styled.button`
-  align-self: center;
+  align-self: stretch;
+  width: 87px;
+  background-repeat: no-repeat;
+    background-position: center;
 `;
 
 export function Controls({ tick, setTick, len }) {
@@ -77,7 +82,12 @@ export function Controls({ tick, setTick, len }) {
 
   return (
     <PlayerContainer>
-      <Button onClick={() => setIsPlaying(!isPlaying)}>PLAY</Button>
+      <Button
+        onClick={() => setIsPlaying(!isPlaying)}
+        style={{
+          backgroundImage: isPlaying ? `url(${pause})` : `url(${arrow})`,
+        }}
+      />
       <Column>
         <Slider
           value={tick}
