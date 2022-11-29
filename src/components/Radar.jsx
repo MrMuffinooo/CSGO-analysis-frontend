@@ -4,6 +4,7 @@ import { RoundContext } from "./contexts/RoundContext";
 import Player from "./Player";
 import Bomb from "./Bomb";
 import { GameContext } from "./contexts/GameContext";
+import { Grenade } from "./Grenade";
 
 export function Radar({ tick }) {
   const ref = useRef(null);
@@ -22,6 +23,21 @@ export function Radar({ tick }) {
           width={"100%"}
         />
       )}
+      {round.grenades &&
+        round.grenades.map((e, i) => {
+          return (
+            <Grenade
+              key={i}
+              x={e.x}
+              y={e.y}
+              slice={e.slice}
+              start={e.start}
+              end={e.end}
+              tick={tick}
+              type={e.type}
+            />
+          );
+        })}
       {round.players &&
         round.players.map((e) => {
           return (
