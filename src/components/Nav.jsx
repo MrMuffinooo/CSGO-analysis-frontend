@@ -5,6 +5,7 @@ import { getMatchData } from "../utils/getMatch";
 import { getMatchesData } from "../utils/getMatches";
 import { getRoundData } from "../utils/getRound";
 import { MatchListing } from "./MatchListing";
+import { Uploader } from "./Uploader";
 
 const Container = styled.div`
   min-width: 200px;
@@ -12,9 +13,6 @@ const Container = styled.div`
   flex-grow: 2;
 `;
 
-const UploadContainer = styled.div`
-  height: 30px;
-`;
 const MatchesContainer = styled.div``;
 
 export function Nav({ setGame, setRound }) {
@@ -24,8 +22,7 @@ export function Nav({ setGame, setRound }) {
 
   return (
     <Container>
-      <UploadContainer>upload</UploadContainer>
-      <MatchesContainer>maches</MatchesContainer>
+      <Uploader />
       <button onClick={() => getMatchesData(setGames)}>Get matches</button>
       {games &&
         games.map((e, i) => {
