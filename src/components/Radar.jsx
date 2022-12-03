@@ -30,7 +30,7 @@ export function Radar({ tick }) {
               key={i}
               x={e.x}
               y={e.y}
-              slice={e.slice}
+              slice={e.radarSlice}
               start={e.start}
               end={e.end}
               tick={tick}

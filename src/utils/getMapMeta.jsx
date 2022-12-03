@@ -33,8 +33,8 @@ export const getMapMeta = async (
         setSliceOffsetX(myJson[map].sliceOffset.x);
         setSliceOffsetY(myJson[map].sliceOffset.y);
       } else {
-        setSliceOffsetX(1.0);
-        setSliceOffsetY(1.0);
+        setSliceOffsetX(0);
+        setSliceOffsetY(0);
       }
     });
 };
