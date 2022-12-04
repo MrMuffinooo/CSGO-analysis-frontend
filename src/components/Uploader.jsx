@@ -17,6 +17,9 @@ const TextInput = styled.input`
 
 const UploadButton = styled.button`
   display: block;
+  width: 100%;
+  height: 30px;
+  border-radius: 0px;
 `;
 const ProgressBar = styled.div`
   height: 20px;
@@ -80,7 +83,10 @@ export function Uploader() {
     const address = "https://apimocha.com/cscs/post";
     // const address = name ? `<adres>/upload/${name}/` : `<adres>/upload/`
     setErr("");
-    if (!selectedFile) return;
+    if (!selectedFile) {
+      textRef.current.value = "Musisz wybrać plik";
+      return;
+    }
     textRef.current.value = "";
     fileRef.current.value = "";
     try {

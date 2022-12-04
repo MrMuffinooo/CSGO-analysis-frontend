@@ -14,6 +14,15 @@ const Container = styled.div`
 `;
 const ListingsContainer = styled.div`
   margin-top: 20px;
+  border-top: 2px solid black;
+`;
+const Button = styled.button`
+  align-self: flex-end;
+  margin-top: 50px;
+`;
+const FlexColumn = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export function Nav({ setGame, setRound }) {
@@ -24,27 +33,29 @@ export function Nav({ setGame, setRound }) {
   return (
     <Container>
       <Uploader />
-      <button onClick={() => getMatchesData(setGames)}>Get matches</button>
-      <ListingsContainer>
-        {games &&
-          games.map((e, i) => {
-            return (
-              <MatchListing
-                key={e.id}
-                no={i}
-                id={e.id}
-                setWhoIsOpen={setWhoIsOpen}
-                open={whoIsOpen}
-                selectedRound={selectedRound}
-                setSelectedRound={setSelectedRound}
-                getMatch={() => getMatchData(setGame, e.id)}
-                setRound={setRound}
-              >
-                {e.name}
-              </MatchListing>
-            );
-          })}
-      </ListingsContainer>
+      <FlexColumn>
+        <Button onClick={() => getMatchesData(setGames)}>Odświerz listę</Button>
+        <ListingsContainer>
+          {games &&
+            games.map((e, i) => {
+              return (
+                <MatchListing
+                  key={e.id}
+                  no={i}
+                  id={e.id}
+                  setWhoIsOpen={setWhoIsOpen}
+                  open={whoIsOpen}
+                  selectedRound={selectedRound}
+                  setSelectedRound={setSelectedRound}
+                  getMatch={() => getMatchData(setGame, e.id)}
+                  setRound={setRound}
+                >
+                  {e.name}
+                </MatchListing>
+              );
+            })}
+        </ListingsContainer>
+      </FlexColumn>
     </Container>
   );
 }
