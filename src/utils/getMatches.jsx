@@ -1,4 +1,8 @@
 export const getMatchesData = async (setGames) => {
+  // axios.get(`https://endpoint.com/matches`).then((res) => {
+  //   setGames(res.data.matches);
+  // });
+
   fetch(
     "./matches.json",
 

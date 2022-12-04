@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { getMatchData } from "../utils/getMatch";
 import { getMatchesData } from "../utils/getMatches";
-import { getRoundData } from "../utils/getRound";
 import { MatchListing } from "./MatchListing";
 import { Uploader } from "./Uploader";
 
@@ -12,8 +11,6 @@ const Container = styled.div`
   max-width: 300px;
   flex-grow: 2;
 `;
-
-const MatchesContainer = styled.div``;
 
 export function Nav({ setGame, setRound }) {
   const [games, setGames] = useState([]);
@@ -35,8 +32,8 @@ export function Nav({ setGame, setRound }) {
               open={whoIsOpen}
               selectedRound={selectedRound}
               setSelectedRound={setSelectedRound}
-              getMatch={() => getMatchData(setGame)}
-              getRound={() => getRoundData(setRound)}
+              getMatch={() => getMatchData(setGame, e.id)}
+              setRound={setRound}
             >
               {e.name}
             </MatchListing>

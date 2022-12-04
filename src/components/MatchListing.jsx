@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import React, { useContext, useEffect, useState } from "react";
 import arrow from "../assets/icons/arrow.png";
+import { getRoundData } from "../utils/getRound";
 import { GameContext } from "./contexts/GameContext";
 import { RoundListing } from "./RoundListing";
 
@@ -35,9 +36,9 @@ export function MatchListing({
   no,
   open,
   id,
+  setRound,
   setWhoIsOpen,
   getMatch,
-  getRound,
   selectedRound,
   setSelectedRound,
 }) {
@@ -59,6 +60,7 @@ export function MatchListing({
       setWhoIsOpen(no);
       getMatch();
       setSelectedRound(-1);
+      setRound({});
     }
   };
 
@@ -87,7 +89,7 @@ export function MatchListing({
                   no={e}
                   selectedRound={selectedRound}
                   setSelectedRound={setSelectedRound}
-                  getRound={getRound}
+                  getRound={() => getRoundData(setRound, id, e)}
                 />
               );
             })}

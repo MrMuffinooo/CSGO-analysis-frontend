@@ -8,7 +8,7 @@ import ctFlashIcon from "../assets/icons/ctFlashIcon.png";
 import tFlashIcon from "../assets/icons/tFlashIcon.png";
 import ctIconFire from "../assets/icons/ctIcon_fire.png";
 import ctIconFlashFire from "../assets/icons/ctIcon_fire_flash.png";
-import tIconFlashFire from "../assets/icons/ctIcon_fire_flash.png";
+import tIconFlashFire from "../assets/icons/tIcon_fire_flash.png";
 import ctDead from "../assets/icons/ctDead.png";
 import { GameContext } from "./contexts/GameContext";
 import { getMapMeta } from "../utils/getMapMeta.jsx";

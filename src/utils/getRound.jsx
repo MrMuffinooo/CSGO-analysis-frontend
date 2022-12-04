@@ -1,4 +1,8 @@
-export const getRoundData = async (setRound) => {
+export const getRoundData = async (setRound, matchId, roundId) => {
+  // axios.get(`https://endpoint.com/matches/${matchId}/${roundId}`).then((res) => {
+  //   setRound(res.data.matches);
+  // });
+
   fetch(
     "./round.json",
 
