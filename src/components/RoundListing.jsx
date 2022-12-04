@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { COLOR_SECONDARY } from "../utils/constans";
 
 const ListingContainer = styled.div`
   display: flex;
@@ -7,6 +8,9 @@ const ListingContainer = styled.div`
   width: 20px;
   height: 20px;
   cursor: pointer;
+  &:hover {
+    background-color: lightgray !important;
+  }
 `;
 
 export function RoundListing({
@@ -24,7 +28,9 @@ export function RoundListing({
 
   return (
     <ListingContainer
-      style={{ backgroundColor: no === selectedRound ? "green" : "inherit" }}
+      style={{
+        backgroundColor: no === selectedRound ? COLOR_SECONDARY : "inherit",
+      }}
       onClick={handleClick}
     >
       {no + 1}

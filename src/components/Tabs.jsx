@@ -23,13 +23,23 @@ export function Tabs({ tabIsMecz, handleMeczClick, handleRundaClick }) {
   return (
     <TabsContainer>
       <Tab
-        style={{ backgroundColor: tabIsMecz ? "white" : "rgba(0,0,0,0.2)" }}
+        style={{
+          boxShadow: tabIsMecz
+            ? "none"
+            : "inset -64px 0px 46px -70px rgba(66, 68, 90, 1)",
+          backgroundColor: tabIsMecz ? "white" : "rgba(0,0,0,0.1)",
+        }}
         onClick={handleRundaClick}
       >
         Runda
       </Tab>
       <Tab
-        style={{ backgroundColor: tabIsMecz ? "rgba(0,0,0,0.2)" : "white" }}
+        style={{
+          boxShadow: tabIsMecz
+            ? "inset 64px 0px 46px -70px rgba(66, 68, 90, 1)"
+            : "none",
+          backgroundColor: tabIsMecz ? "rgba(0,0,0,0.1)" : "white",
+        }}
         onClick={handleMeczClick}
       >
         Mecz

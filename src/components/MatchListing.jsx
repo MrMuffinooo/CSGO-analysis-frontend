@@ -9,12 +9,14 @@ const ListingContainer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  border-bottom: 1px solid grey;
 `;
 
 const RoundListingContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  border-top: 0.5px solid lightgray;
 `;
 
 const Img = styled.img`

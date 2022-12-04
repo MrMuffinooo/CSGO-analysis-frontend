@@ -12,6 +12,9 @@ const Container = styled.div`
   flex-grow: 2;
   border-left: 1px solid black;
 `;
+const ListingsContainer = styled.div`
+  margin-top: 20px;
+`;
 
 export function Nav({ setGame, setRound }) {
   const [games, setGames] = useState([]);
@@ -22,24 +25,26 @@ export function Nav({ setGame, setRound }) {
     <Container>
       <Uploader />
       <button onClick={() => getMatchesData(setGames)}>Get matches</button>
-      {games &&
-        games.map((e, i) => {
-          return (
-            <MatchListing
-              key={e.id}
-              no={i}
-              id={e.id}
-              setWhoIsOpen={setWhoIsOpen}
-              open={whoIsOpen}
-              selectedRound={selectedRound}
-              setSelectedRound={setSelectedRound}
-              getMatch={() => getMatchData(setGame, e.id)}
-              setRound={setRound}
-            >
-              {e.name}
-            </MatchListing>
-          );
-        })}
+      <ListingsContainer>
+        {games &&
+          games.map((e, i) => {
+            return (
+              <MatchListing
+                key={e.id}
+                no={i}
+                id={e.id}
+                setWhoIsOpen={setWhoIsOpen}
+                open={whoIsOpen}
+                selectedRound={selectedRound}
+                setSelectedRound={setSelectedRound}
+                getMatch={() => getMatchData(setGame, e.id)}
+                setRound={setRound}
+              >
+                {e.name}
+              </MatchListing>
+            );
+          })}
+      </ListingsContainer>
     </Container>
   );
 }
