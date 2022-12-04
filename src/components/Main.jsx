@@ -10,6 +10,7 @@ import { RoundInfo } from "./RoundInfo";
 import { SideRadar } from "./SideRadar";
 import { Tabs } from "./Tabs";
 import { PredictionBar } from "./PredictionBar";
+import Table from "./Table";
 
 const Container = styled.div`
   display: flex;
@@ -59,18 +60,23 @@ export function Main() {
         handleMeczClick={() => setTabIsMecz(true)}
         handleRundaClick={() => setTabIsMecz(false)}
       />
-      <RoundInfo />
-      <PredictionBar tick={tick} />
-      <Container>
-        <SideRadar isLeft={true} tick={tick} />
-        <Radar tick={tick} />
-        <SideRadar isLeft={false} tick={tick} />
-      </Container>
-      <Controls
-        tick={tick}
-        setTick={setTick}
-        len={round.length ? round.length : 100}
-      />
+      {!tabIsMecz && (
+        <>
+          <RoundInfo />
+          <PredictionBar tick={tick} />
+          <Container>
+            <SideRadar isLeft={true} tick={tick} />
+            <Radar tick={tick} />
+            <SideRadar isLeft={false} tick={tick} />
+          </Container>
+          <Controls
+            tick={tick}
+            setTick={setTick}
+            len={round.length ? round.length : 100}
+          />
+        </>
+      )}
+      {tabIsMecz && <Table />}
     </div>
   );
 }
