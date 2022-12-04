@@ -14,6 +14,7 @@ const PlayerContainer = styled.div`
   width: 100%;
   background-color: white;
   z-index: 100;
+  border-top: 2px solid grey;
 `;
 
 const Indicator = styled.div`

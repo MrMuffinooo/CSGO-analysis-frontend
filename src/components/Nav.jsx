@@ -10,6 +10,7 @@ const Container = styled.div`
   min-width: 200px;
   max-width: 300px;
   flex-grow: 2;
+  border-left: 1px solid black;
 `;
 
 export function Nav({ setGame, setRound }) {

@@ -14,6 +14,7 @@ const Container = styled.div`
 
 const Article = styled.article`
   flex-grow: 9;
+  box-shadow: inset -13px 0px 17px -17px rgba(66, 68, 90, 1);
 `;
 
 function App() {

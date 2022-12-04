@@ -5,6 +5,11 @@ import { COLOR_CT, COLOR_T, TICK_LENGTH } from "../utils/constans";
 const Container = styled.div`
   height: 50px;
   position: relative;
+  border: 4px solid black;
+  border-bottom: none;
+  &:last-child {
+    border-bottom: 4px solid black;
+  }
 `;
 
 const NoContainer = styled.div`

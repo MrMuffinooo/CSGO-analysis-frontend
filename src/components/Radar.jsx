@@ -15,7 +15,14 @@ export function Radar({ tick }) {
   // }, [ref.current]);
 
   return (
-    <div ref={ref} style={{ width: "1024px", position: "relative" }}>
+    <div
+      ref={ref}
+      style={{
+        width: "1024px",
+        position: "relative",
+        // border: "3px solid black",
+      }}
+    >
       {game.map && (
         <img
           src={require(`../assets/maps/${game.map}/radar.png`)}

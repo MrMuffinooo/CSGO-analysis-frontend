@@ -16,13 +16,15 @@ const Container = styled.div`
   min-height: 500px;
   justify-content: center;
 `;
+
 const Banner = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   height: 100px;
-  font-size: 32px;
+  font-size: 40px;
   font-weight: bold;
+  border-bottom: 2px solid black;
 `;
 
 const MapBanner = styled.div`
@@ -32,6 +34,7 @@ const MapBanner = styled.div`
   height: 70px;
   font-size: 32px;
   font-weight: bold;
+  border-bottom: 2px solid black;
 `;
 
 export function Main() {

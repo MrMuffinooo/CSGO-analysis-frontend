@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { useState } from "react";
 import { useRef } from "react";
+import { COLOR_SECONDARY } from "../utils/constans";
 
 const UploadContainer = styled.div``;
 
@@ -20,7 +21,7 @@ const UploadButton = styled.button`
 const ProgressBar = styled.div`
   height: 20px;
   width: 0;
-  background-color: green;
+  background-color: ${COLOR_SECONDARY};
 
   transition-property: width;
   transition-timing-function: linear;
@@ -38,6 +39,8 @@ const ProgressContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
 `;
 const PercentageContainer = styled.div`
   height: 15px;

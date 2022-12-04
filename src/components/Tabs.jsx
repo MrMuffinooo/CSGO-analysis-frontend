@@ -7,6 +7,7 @@ const TabsContainer = styled.div`
   height: 60px;
   font-size: 32px;
   font-weight: bold;
+  border-bottom: 2px solid black;
 `;
 
 const Tab = styled.div`
