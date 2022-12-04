@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import { GameContext } from "./contexts/GameContext";
 
 const columns = [
   { field: "id", headerName: "ID", type: "number", width: 70 },
@@ -23,6 +24,10 @@ const rows = [
 ];
 
 export default function Table() {
+  const game = useContext(GameContext);
+  console.log(game);
+  if (!game.map) return;
+
   const getClass = (id) => {
     return id < 5 ? "terro" : "counter";
   };
