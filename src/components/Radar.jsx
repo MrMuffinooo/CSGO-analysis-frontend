@@ -49,16 +49,16 @@ export function Radar({ tick }) {
         round.players.map((e) => {
           return (
             <Player
-              key={round[e].id}
-              no={round[e].id}
-              x={round[e].x[tick]}
-              y={round[e].y[tick]}
-              angle={round[e].a[tick]}
-              hp={round[e].hp[tick]}
-              team={round[e].team}
-              fires={round[e].fires[tick]}
-              slice={round[e].radarSlice[tick]}
-              isBlinded={round[e].isBlinded[tick]}
+              key={e.id}
+              no={e.id}
+              x={e.x[tick]}
+              y={e.y[tick]}
+              angle={e.a[tick]}
+              hp={e.hp[tick]}
+              team={e.team}
+              fires={e.fires[tick]}
+              slice={e.radarSlice[tick]}
+              isBlinded={e.isBlinded[tick]}
             />
           );
         })}

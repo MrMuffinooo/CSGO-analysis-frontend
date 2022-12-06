@@ -17,34 +17,15 @@ export function BannerContent() {
   const game = useContext(GameContext);
   const round = useContext(RoundContext);
 
-  if (round.teams && game.teams) {
-    const firstColor =
-      round.teams[game.teams.lastCTSide.name] === "T" ? COLOR_T : COLOR_CT;
-    const secondColor =
-      round.teams[game.teams.lastTSide.name] === "T" ? COLOR_T : COLOR_CT;
-
-    return (
-      <>
-        <BannerChild style={{ color: firstColor }}>
-          {game.teams.lastCTSide.name}{" "}
-          {round.teams[game.teams.lastCTSide.name].side}
-        </BannerChild>
-        <BannerChild>vs</BannerChild>
-        <BannerChild style={{ color: secondColor }}>
-          {game.teams.lastTSide.name}{" "}
-          {round.teams[game.teams.lastTSide.name].side}
-        </BannerChild>
-      </>
-    );
-  } else if (game.teams) {
+  if (game.teams) {
     return (
       <>
         <BannerChild style={{ color: COLOR_CT }}>
-          {game.teams.lastCTSide.name}
+          {round.ctName ? round.ctName : game.teams.lastCTSide.name}
         </BannerChild>
         <BannerChild>vs</BannerChild>
         <BannerChild style={{ color: COLOR_T }}>
-          {game.teams.lastTSide.name}
+          {round.tName ? round.tName : game.teams.lastTSide.name}
         </BannerChild>
       </>
     );
@@ -56,5 +37,3 @@ export function BannerContent() {
     </WelcomeText>
   );
 }
-
-// round.teams[game.teams.lastCTSide.name].side

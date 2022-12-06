@@ -19,17 +19,23 @@ export function SideRadar({ isLeft, tick }) {
   const listPlayers = (array) => {
     return array
       .sort((a, b) => {
-        return round[a.name].id - round[b.name].id;
+        return a.id - b.id;
+      })
+      .filter((p) => {
+        if (isLeft) {
+          return p.team === "CT";
+        }
+        return p.team === "T";
       })
       .map((p) => {
         return (
           <PlayerStatus
-            no={round[p.name].id}
-            key={round[p.name].id}
+            no={p.id}
+            key={p.id}
             name={p.name}
-            hp={round[p.name].hp[tick]}
+            hp={p.hp[tick]}
             isLeft={isLeft}
-            isT={round[p.name].team === "T"}
+            isT={p.team === "T"}
           />
         );
       });
@@ -37,11 +43,5 @@ export function SideRadar({ isLeft, tick }) {
   if (!round.players || !game.teams) {
     return <Container></Container>;
   }
-  return (
-    <Container>
-      {isLeft
-        ? listPlayers(game.teams.lastCTSide.players)
-        : listPlayers(game.teams.lastTSide.players)}
-    </Container>
-  );
+  return <Container>{listPlayers(round.players)}</Container>;
 }
