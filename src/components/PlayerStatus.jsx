@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { COLOR_CT, COLOR_T, TICK_LENGTH } from "../utils/constans";
+import armorIMG from "../assets/icons/armor.png";
+import helmetIMG from "../assets/icons/helmet.png";
 
 const Container = styled.div`
   height: 50px;
@@ -25,6 +27,30 @@ const TopHalf = styled.div`
   z-index: 2;
 `;
 
+const BottomHalf = styled.div`
+  height: 50%;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 2;
+  padding: 0 5px;
+`;
+
+const ImgContainer = styled.div`
+  height: 100%;
+  position: relative;
+  z-index: 3;
+`;
+
+const NameContainer = styled.div`
+  flex-grow: 1;
+`;
+
+const Img = styled.img`
+  max-height: 100%;
+  max-width: 100%;
+`;
+
 const HealthIndicator = styled.div`
   position: absolute;
   height: 100%;
@@ -36,7 +62,16 @@ const HealthIndicator = styled.div`
   transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
 `;
 
-export function PlayerStatus({ no, hp, name, isLeft, isT }) {
+export function PlayerStatus({
+  no,
+  hp,
+  name,
+  isLeft,
+  isT,
+  primaryWeapon,
+  hasArmor,
+  hasHelmet,
+}) {
   return (
     <Container>
       <TopHalf
@@ -44,9 +79,28 @@ export function PlayerStatus({ no, hp, name, isLeft, isT }) {
           flexDirection: isLeft ? "row" : "row-reverse",
         }}
       >
-        <div>{name}</div>
+        <ImgContainer style={{ visibility: hasArmor ? "visible" : "hidden" }}>
+          <Img src={armorIMG} />
+        </ImgContainer>
+        <ImgContainer style={{ visibility: hasHelmet ? "visible" : "hidden" }}>
+          <Img src={helmetIMG} />
+        </ImgContainer>
+        <NameContainer
+          style={{
+            textAlign: isLeft ? "right" : "left",
+          }}
+        >
+          {name}
+        </NameContainer>
         <NoContainer> {no}</NoContainer>
       </TopHalf>
+      <BottomHalf
+        style={{
+          flexDirection: isLeft ? "row" : "row-reverse",
+        }}
+      >
+        {primaryWeapon}
+      </BottomHalf>
       <HealthIndicator
         style={{
           width: hp + "%",
