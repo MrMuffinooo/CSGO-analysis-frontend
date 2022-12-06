@@ -60,23 +60,23 @@ export function Main() {
         handleMeczClick={() => setTabIsMecz(true)}
         handleRundaClick={() => setTabIsMecz(false)}
       />
-      {!tabIsMecz && (
-        <>
-          <RoundInfo />
-          <PredictionBar tick={tick} />
-          <Container>
-            <SideRadar isLeft={true} tick={tick} />
-            <Radar tick={tick} />
-            <SideRadar isLeft={false} tick={tick} />
-          </Container>
-          <Controls
-            tick={tick}
-            setTick={setTick}
-            len={round.length ? round.length : 100}
-          />
-        </>
-      )}
-      {tabIsMecz && <Table />}
+      <div style={{ display: tabIsMecz ? "none" : "block" }}>
+        <RoundInfo />
+        <PredictionBar tick={tick} />
+        <Container>
+          <SideRadar isLeft={true} tick={tick} />
+          <Radar tick={tick} />
+          <SideRadar isLeft={false} tick={tick} />
+        </Container>
+        <Controls
+          tick={tick}
+          setTick={setTick}
+          len={round.length ? round.length : 100}
+        />
+      </div>
+      <div style={{ display: !tabIsMecz ? "none" : "block" }}>
+        <Table />
+      </div>
     </div>
   );
 }
