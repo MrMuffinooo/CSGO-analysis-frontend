@@ -9,6 +9,7 @@ import { Uploader } from "./Uploader";
 const Container = styled.div`
   min-width: 200px;
   max-width: 300px;
+  max-height: 1300px;
   flex-grow: 2;
   border-left: 1px solid black;
   overflow-x: hidden;
@@ -16,6 +17,8 @@ const Container = styled.div`
 const ListingsContainer = styled.div`
   margin-top: 20px;
   border-top: 2px solid black;
+  overflow-y: auto;
+  flex-grow: 1;
 `;
 const Button = styled.button`
   width: 80%;
@@ -44,7 +47,7 @@ export function Nav({ setGame, setRound }) {
               return (
                 <MatchListing
                   key={e.id}
-                  no={i}
+                  no={i + 1}
                   id={e.id}
                   setWhoIsOpen={setWhoIsOpen}
                   open={whoIsOpen}

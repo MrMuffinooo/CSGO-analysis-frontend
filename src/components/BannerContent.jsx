@@ -28,6 +28,8 @@ export function BannerContent({ tabIsMecz }) {
               : ""
             : round.ctName
             ? round.ctName
+            : game.teams.lastCTSide.name
+            ? game.teams.lastCTSide.name
             : ""}
         </BannerChild>
         <BannerChild>vs</BannerChild>
@@ -38,6 +40,8 @@ export function BannerContent({ tabIsMecz }) {
               : ""
             : round.tName
             ? round.tName
+            : game.teams.lastTSide.name
+            ? game.teams.lastTSide.name
             : ""}
         </BannerChild>
       </>

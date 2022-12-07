@@ -52,6 +52,7 @@ const PercentageContainer = styled.div`
   font-size: 15px;
   line-height: 15px;
   background-color: white;
+  padding: 1px 5px;
 
   color: black;
   font-weight: bold;
@@ -63,6 +64,7 @@ export function Uploader() {
   const [name, setName] = useState("");
   const [err, setErr] = useState("");
   const [percentage, setPercentage] = useState(0);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const textRef = useRef();
   const fileRef = useRef();
@@ -89,6 +91,7 @@ export function Uploader() {
     }
     textRef.current.value = "";
     fileRef.current.value = "";
+    setIsDisabled(true);
     try {
       await axios.post(
         address,
@@ -104,6 +107,8 @@ export function Uploader() {
       );
     } catch (err) {
       setErr(err);
+    } finally {
+      setIsDisabled(false);
     }
   };
 
@@ -123,7 +128,9 @@ export function Uploader() {
         required
       />
 
-      <UploadButton onClick={handleSubmit}>Wyślij</UploadButton>
+      <UploadButton onClick={handleSubmit} disabled={isDisabled}>
+        Wyślij
+      </UploadButton>
       <ProgressContainer>
         <ProgressBar style={{ width: `${percentage}%` }} />
         <PercentageContainer>{percentage}%</PercentageContainer>
