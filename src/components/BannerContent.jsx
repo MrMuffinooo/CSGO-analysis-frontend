@@ -14,7 +14,7 @@ const BannerChild = styled.div`
 
 const WelcomeText = styled.div``;
 
-export function BannerContent() {
+export function BannerContent({ tabIsMecz }) {
   const game = useContext(GameContext);
   const round = useContext(RoundContext);
 
@@ -22,11 +22,23 @@ export function BannerContent() {
     return (
       <>
         <BannerChild style={{ color: COLOR_CT }}>
-          {round.ctName ? round.ctName : game.teams.lastCTSide.name}
+          {tabIsMecz
+            ? game.lastCTSide.name
+              ? game.lastCTSide.name
+              : ""
+            : round.ctName
+            ? round.ctName
+            : ""}
         </BannerChild>
         <BannerChild>vs</BannerChild>
         <BannerChild style={{ color: COLOR_T }}>
-          {round.tName ? round.tName : game.teams.lastTSide.name}
+          {tabIsMecz
+            ? game.lastTSide.name
+              ? game.lastTSide.name
+              : ""
+            : round.tName
+            ? round.tName
+            : ""}
         </BannerChild>
       </>
     );

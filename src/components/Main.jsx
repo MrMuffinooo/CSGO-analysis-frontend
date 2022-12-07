@@ -51,7 +51,7 @@ export function Main() {
   return (
     <div>
       <Banner>
-        <BannerContent />
+        <BannerContent tabIsMecz={tabIsMecz} />
       </Banner>
       <MapBanner>
         {game.map ? game.map : ""}
