@@ -23,8 +23,8 @@ export function BannerContent({ tabIsMecz }) {
       <>
         <BannerChild style={{ color: COLOR_CT }}>
           {tabIsMecz
-            ? game.lastCTSide.name
-              ? game.lastCTSide.name
+            ? game.teams.lastCTSide.name
+              ? game.teams.lastCTSide.name
               : ""
             : round.ctName
             ? round.ctName
@@ -33,8 +33,8 @@ export function BannerContent({ tabIsMecz }) {
         <BannerChild>vs</BannerChild>
         <BannerChild style={{ color: COLOR_T }}>
           {tabIsMecz
-            ? game.lastTSide.name
-              ? game.lastTSide.name
+            ? game.teams.lastTSide.name
+              ? game.teams.lastTSide.name
               : ""
             : round.tName
             ? round.tName

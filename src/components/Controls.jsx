@@ -15,6 +15,17 @@ const PlayerContainer = styled.div`
   background-color: white;
   z-index: 100;
   border-top: 2px solid grey;
+  & .MuiSlider-thumb {
+    transition-property: left;
+    transition-timing-function: linear;
+    transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
+  }
+
+  & .MuiSlider-track {
+    transition-property: width;
+    transition-timing-function: linear;
+    transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
+  }
 `;
 
 const Indicator = styled.div`
