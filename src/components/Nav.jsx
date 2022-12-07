@@ -18,8 +18,10 @@ const ListingsContainer = styled.div`
   border-top: 2px solid black;
 `;
 const Button = styled.button`
-  align-self: flex-end;
+  width: 80%;
+  height: 25px;
   margin-top: 50px;
+  align-self: center;
 `;
 const FlexColumn = styled.div`
   display: flex;
