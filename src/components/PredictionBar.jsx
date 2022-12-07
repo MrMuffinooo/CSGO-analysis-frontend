@@ -34,7 +34,6 @@ const PercentContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 20px;
-  mix-blend-mode: difference;
   width: 150px;
 
   z-index: 1;
@@ -62,9 +61,17 @@ export function PredictionBar({ tick }) {
   return (
     <Container>
       <Bar style={{ width: width }} />
-      <PercentContainer style={{ color: "white" }}>{pred}%</PercentContainer>
+      <PercentContainer
+        style={{ color: pred >= 90 ? "white" : pred <= 10 ? "red" : COLOR_T }}
+      >
+        {pred}%
+      </PercentContainer>
       <Middle />
-      <PercentContainer>{100 - pred}%</PercentContainer>
+      <PercentContainer
+        style={{ color: pred <= 10 ? "white" : pred >= 90 ? "red" : COLOR_CT }}
+      >
+        {100 - pred}%
+      </PercentContainer>
     </Container>
   );
 }
