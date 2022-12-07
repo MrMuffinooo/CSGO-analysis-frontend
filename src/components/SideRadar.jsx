@@ -36,9 +36,10 @@ export function SideRadar({ isLeft, tick }) {
             hp={p.hp[tick]}
             isLeft={isLeft}
             isT={p.team === "T"}
-            primaryWeapon={p.mainWeapon}
+            primaryWeapon={p.mainWeapon[tick]}
             hasArmor={p.hasArmor}
             hasHelmet={p.hasHelmet}
+            hasDef={p.hasDef[tick]}
           />
         );
       });

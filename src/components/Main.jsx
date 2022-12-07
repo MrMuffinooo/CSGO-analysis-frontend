@@ -11,11 +11,14 @@ import { SideRadar } from "./SideRadar";
 import { Tabs } from "./Tabs";
 import { PredictionBar } from "./PredictionBar";
 import Table from "./Table";
+import Clock from "./Clock";
 
 const Container = styled.div`
   display: flex;
   min-height: 500px;
   justify-content: center;
+  overflow: hidden;
+  position: relative;
 `;
 
 const Banner = styled.div`
@@ -67,6 +70,7 @@ export function Main() {
           <SideRadar isLeft={true} tick={tick} />
           <Radar tick={tick} />
           <SideRadar isLeft={false} tick={tick} />
+          <Clock clock={round.clockTime[tick]} />
         </Container>
         <Controls
           tick={tick}

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { COLOR_CT, COLOR_T, TICK_LENGTH } from "../utils/constans";
 import armorIMG from "../assets/icons/armor.png";
 import helmetIMG from "../assets/icons/helmet.png";
+import defIMG from "../assets/icons/def.png";
 
 const Container = styled.div`
   height: 50px;
@@ -32,6 +33,12 @@ const BottomHalf = styled.div`
   display: flex;
   justify-content: flex-end;
   position: relative;
+  z-index: 2;
+`;
+
+const WeaponContainer = styled.div`
+  height: 100%;
+  flex-grow: 1;
   z-index: 2;
   padding: 0 5px;
 `;
@@ -71,6 +78,7 @@ export function PlayerStatus({
   primaryWeapon,
   hasArmor,
   hasHelmet,
+  hasDef,
 }) {
   return (
     <Container>
@@ -99,7 +107,20 @@ export function PlayerStatus({
           flexDirection: isLeft ? "row" : "row-reverse",
         }}
       >
-        {primaryWeapon}
+        <ImgContainer
+          style={{
+            visibility: hasDef ? "visible" : "hidden",
+          }}
+        >
+          <Img src={defIMG} />
+        </ImgContainer>
+        <WeaponContainer
+          style={{
+            textAlign: isLeft ? "right" : "left",
+          }}
+        >
+          {primaryWeapon}
+        </WeaponContainer>
       </BottomHalf>
       <HealthIndicator
         style={{
