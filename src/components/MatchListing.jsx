@@ -10,6 +10,7 @@ const ListingContainer = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   border-bottom: 1px solid grey;
+  padding-left: 4px;
 `;
 
 const RoundListingContainer = styled.div`

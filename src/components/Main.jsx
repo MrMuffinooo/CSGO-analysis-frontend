@@ -75,7 +75,7 @@ export function Main() {
         <Controls
           tick={tick}
           setTick={setTick}
-          len={round.length ? round.length : 100}
+          len={round.length ? round.length : -1}
         />
       </div>
       <div style={{ display: !tabIsMecz ? "none" : "block" }}>

@@ -11,6 +11,7 @@ const Container = styled.div`
   max-width: 300px;
   flex-grow: 2;
   border-left: 1px solid black;
+  overflow-x: hidden;
 `;
 const ListingsContainer = styled.div`
   margin-top: 20px;

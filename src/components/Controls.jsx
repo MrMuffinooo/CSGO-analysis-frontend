@@ -80,6 +80,7 @@ export function Controls({ tick, setTick, len }) {
       clearInterval(id);
     };
   }, [isPlaying]);
+  if (len === -1) return;
 
   return (
     <PlayerContainer>
