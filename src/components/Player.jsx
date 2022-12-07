@@ -97,7 +97,7 @@ function Player({ no, hp, x, y, angle, team, fires, slice, isBlinded }) {
   const playerIcon = `url(${getPlayerIcon()})`;
 
   // useEffect(() => {
-  //   // console.log("Player " + no + " has " + hp + " HP");
+  //    console.log("Player " + no + " has " + hp + " HP");
   // }, [hp]);
 
   return (

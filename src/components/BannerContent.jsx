@@ -9,6 +9,7 @@ const BannerChild = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 33%;
 `;
 
 const WelcomeText = styled.div``;

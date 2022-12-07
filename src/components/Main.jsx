@@ -70,7 +70,7 @@ export function Main() {
           <SideRadar isLeft={true} tick={tick} />
           <Radar tick={tick} />
           <SideRadar isLeft={false} tick={tick} />
-          <Clock clock={round.clockTime[tick]} />
+          {round.clockTime && <Clock clock={round.clockTime[tick]} />}
         </Container>
         <Controls
           tick={tick}

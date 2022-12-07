@@ -90,7 +90,6 @@ export function Uploader() {
     textRef.current.value = "";
     fileRef.current.value = "";
     try {
-      console.log("here");
       await axios.post(
         address,
         {

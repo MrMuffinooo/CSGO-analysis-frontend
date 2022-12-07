@@ -15,13 +15,10 @@ export const getMatchesData = async (setGames) => {
     }
   )
     .then(function (response) {
-      // console.log(response);
-
       return response.json();
     })
 
     .then(function (myJson) {
-      // console.log(myJson);
       setGames(myJson.matches);
     });
 };

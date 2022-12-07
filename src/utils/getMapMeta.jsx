@@ -18,14 +18,10 @@ export const getMapMeta = async (
     }
   )
     .then(function (response) {
-      // console.log(response);
-
       return response.json();
     })
 
     .then(function (myJson) {
-      // console.log(myJson);
-
       setResolution(myJson[map].resolution);
       setOffsetX(myJson[map].offset.x);
       setOffsetY(myJson[map].offset.y);

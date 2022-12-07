@@ -25,7 +25,6 @@ const rows = [
 
 export default function Table() {
   const game = useContext(GameContext);
-  console.log(game);
   if (!game.map) return;
 
   const getClass = (id) => {

@@ -15,14 +15,10 @@ export const getRoundData = async (setRound, matchId, roundId) => {
     }
   )
     .then(function (response) {
-      // console.log(response);
-
       return response.json();
     })
 
     .then(function (myJson) {
-      // console.log(myJson);
-
       setRound(myJson);
     });
 };
