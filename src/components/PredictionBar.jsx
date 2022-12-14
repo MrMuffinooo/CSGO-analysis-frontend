@@ -22,7 +22,7 @@ const Bar = styled.div`
   background-color: ${COLOR_CT};
   width: 50%;
   transition-property: width;
-  transition-timing-function: ease-out;
+  transition-timing-function: ease-in-out;
   transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
 
   z-index: 0;
@@ -62,13 +62,13 @@ export function PredictionBar({ tick }) {
     <Container>
       <Bar style={{ width: width }} />
       <PercentContainer
-        style={{ color: pred >= 90 ? "white" : pred <= 10 ? "red" : COLOR_T }}
+        style={{ color: pred >= 85 ? "white" : pred <= 15 ? "red" : COLOR_T }}
       >
         {pred}%
       </PercentContainer>
       <Middle />
       <PercentContainer
-        style={{ color: pred <= 10 ? "white" : pred >= 90 ? "red" : COLOR_CT }}
+        style={{ color: pred <= 15 ? "white" : pred >= 85 ? "red" : COLOR_CT }}
       >
         {100 - pred}%
       </PercentContainer>

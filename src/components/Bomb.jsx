@@ -22,7 +22,7 @@ const BombIndicator = styled.div`
   transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
 `;
 
-function Player({ x, y, state, slice }) {
+function Player({ x, y, state, slice, radarWidth }) {
   const game = useContext(GameContext);
 
   const [resolution, setResolution] = useState(5.0);
@@ -45,8 +45,14 @@ function Player({ x, y, state, slice }) {
     return;
   }
 
-  const xPos = (x + offsetX - (slice ? sliceOffsetX : 0)) / resolution - 3;
-  const yPos = (y + offsetY - (slice ? sliceOffsetY : 0)) / resolution - 10;
+  const xPos =
+    ((x + offsetX - (slice ? sliceOffsetX : 0)) / resolution / 1024) *
+      radarWidth -
+    3;
+  const yPos =
+    ((y + offsetY - (slice ? sliceOffsetY : 0)) / resolution / 1024) *
+      radarWidth -
+    10;
 
   const bombIcon = `url(${
     state === 0 ? bomb : state === 1 ? planted : defused

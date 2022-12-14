@@ -6,7 +6,7 @@ import fire from "../assets/icons/grenades/fire.png";
 import flash from "../assets/icons/grenades/flash.png";
 import smoke from "../assets/icons/grenades/smoke.png";
 
-export function Grenade({ x, y, type, start, end, tick, slice }) {
+export function Grenade({ x, y, type, start, end, tick, slice, radarWidth }) {
   const game = useContext(GameContext);
 
   const [resolution, setResolution] = useState(5.0);
@@ -51,9 +51,13 @@ export function Grenade({ x, y, type, start, end, tick, slice }) {
   const diameter = 280 / resolution;
 
   const xPos =
-    (x + offsetX - (slice ? sliceOffsetX : 0)) / resolution - diameter / 2;
+    ((x + offsetX - (slice ? sliceOffsetX : 0)) / resolution / 1024) *
+      radarWidth -
+    diameter / 2;
   const yPos =
-    (y + offsetY - (slice ? sliceOffsetY : 0)) / resolution - diameter / 2;
+    ((y + offsetY - (slice ? sliceOffsetY : 0)) / resolution / 1024) *
+      radarWidth -
+    diameter / 2;
 
   const bgGrenade = `url(${getBgGrenade()})`;
 

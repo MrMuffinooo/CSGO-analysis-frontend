@@ -68,7 +68,7 @@ export function Main() {
         <PredictionBar tick={tick} />
         <Container>
           <SideRadar isLeft={true} tick={tick} />
-          <Radar tick={tick} />
+          <Radar tick={tick} tab={tabIsMecz} />
           <SideRadar isLeft={false} tick={tick} />
           {round.clockTime && <Clock clock={round.clockTime[tick]} />}
         </Container>

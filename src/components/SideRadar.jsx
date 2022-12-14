@@ -6,6 +6,7 @@ import { RoundContext } from "./contexts/RoundContext";
 import { PlayerStatus } from "./PlayerStatus";
 
 const Container = styled.div`
+  min-width: 170px;
   width: 200px;
   display: flex;
   flex-direction: column;
