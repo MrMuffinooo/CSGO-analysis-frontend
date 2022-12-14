@@ -67,7 +67,7 @@ const Button = styled.button`
   align-self: stretch;
   width: 87px;
   background-repeat: no-repeat;
-    background-position: center;
+  background-position: center;
 `;
 
 export function Controls({ tick, setTick, len }) {

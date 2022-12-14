@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 
 import styled from "styled-components";
+import { TICK_LENGTH } from "../utils/constans";
 import { getMatchData } from "../utils/getMatch";
 import { getMatchesData } from "../utils/getMatches";
 import { MatchListing } from "./MatchListing";
 import { Uploader } from "./Uploader";
 
 const Container = styled.div`
-  min-width: 200px;
   max-width: 300px;
   max-height: 1300px;
-  flex-grow: 2;
-  border-left: 1px solid black;
+
   overflow-x: hidden;
+  position: relative;
+
+  transition-property: width;
+  transition-timing-function: ease-in-out;
+  transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
 `;
+
 const ListingsContainer = styled.div`
   margin-top: 20px;
   border-top: 2px solid black;
@@ -31,13 +36,20 @@ const FlexColumn = styled.div`
   flex-direction: column;
 `;
 
-export function Nav({ setGame, setRound }) {
+export function Nav({ setGame, setRound, navIsHidden }) {
   const [games, setGames] = useState([]);
   const [whoIsOpen, setWhoIsOpen] = useState(-1);
   const [selectedRound, setSelectedRound] = useState(-1);
 
+  console.log(navIsHidden);
+
   return (
-    <Container>
+    <Container
+      style={{
+        minWidth: navIsHidden ? "0px" : "200px",
+        width: navIsHidden ? "0px" : "inherit",
+      }}
+    >
       <Uploader />
       <FlexColumn>
         <Button onClick={() => getMatchesData(setGames)}>Odświerz listę</Button>
