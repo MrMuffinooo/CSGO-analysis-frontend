@@ -48,11 +48,11 @@ function Player({ x, y, state, slice, radarWidth }) {
   const xPos =
     ((x + offsetX - (slice ? sliceOffsetX : 0)) / resolution / 1024) *
       radarWidth -
-    3;
+    (3 / 1024) * radarWidth;
   const yPos =
     ((y + offsetY - (slice ? sliceOffsetY : 0)) / resolution / 1024) *
       radarWidth -
-    10;
+    (10 / 1024) * radarWidth;
 
   const bombIcon = `url(${
     state === 0 ? bomb : state === 1 ? planted : defused
