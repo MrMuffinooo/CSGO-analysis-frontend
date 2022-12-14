@@ -23,6 +23,7 @@ export function Radar({ tick, tab }) {
     <div
       ref={ref}
       style={{
+        minWidth: "500px",
         maxWidth: "1024px",
         position: "relative",
         // border: "3px solid black",
