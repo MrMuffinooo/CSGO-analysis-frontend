@@ -14,7 +14,7 @@ const Container = styled.div`
   overflow-x: hidden;
   position: relative;
 
-  transition-property: width;
+  transition-property: width, min-width;
   transition-timing-function: ease-in-out;
   transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
 `;
