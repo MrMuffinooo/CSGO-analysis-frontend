@@ -3,7 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { useState } from "react";
 import { useRef } from "react";
-import { COLOR_SECONDARY } from "../utils/constans";
+import { COLOR_SECONDARY, ENDPOINT } from "../utils/constans";
 
 const UploadContainer = styled.div``;
 
@@ -82,8 +82,9 @@ export function Uploader() {
   };
 
   const handleSubmit = async (event) => {
-    const address = "https://apimocha.com/cscs/post";
-    // const address = name ? `<adres>/upload/${name}/` : `<adres>/upload/`
+    const address = name
+      ? `${ENDPOINT}/upload/${name}/`
+      : `${ENDPOINT}/upload/`;
     setErr("");
     if (!selectedFile) {
       textRef.current.value = "Musisz wybrać plik";
