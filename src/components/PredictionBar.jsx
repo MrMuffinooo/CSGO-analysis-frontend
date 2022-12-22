@@ -12,6 +12,7 @@ const Container = styled.div`
   background-color: ${COLOR_T};
   position: relative;
   color: white;
+  border-bottom: 2px solid black;
 `;
 
 const Bar = styled.div`

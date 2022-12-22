@@ -26,7 +26,6 @@ export function Radar({ tick, tab }) {
         minWidth: "500px",
         maxWidth: "1024px",
         position: "relative",
-        // border: "3px solid black",
       }}
     >
       {game.map && (

@@ -3,11 +3,38 @@ import { DataGrid } from "@mui/x-data-grid";
 import { GameContext } from "./contexts/GameContext";
 
 const columns = [
-  { field: "team", headerName: "Team", width: 70 },
+  { field: "team", headerName: "Drużyna", width: 70 },
   { field: "name", headerName: "Nazwa", width: 130 },
   { field: "kills", headerName: "K", type: "number", width: 70 },
   { field: "assists", headerName: "A", type: "number", width: 70 },
   { field: "deaths", headerName: "D", type: "number", width: 70 },
+  { field: "kd", headerName: "KD", type: "number", width: 70 },
+  {
+    field: "killsPerRound",
+    headerName: "KPR",
+    type: "number",
+    width: 100,
+  },
+  { field: "damage", headerName: "Obrażenia", type: "number", width: 90 },
+  {
+    field: "adr",
+    headerName: "Obrażenia na rundę",
+    type: "number",
+    width: 170,
+  },
+  { field: "kast", headerName: "KAST", type: "number", width: 70 },
+  {
+    field: "flashedEnemies",
+    headerName: "Oślepieni przeciwnicy",
+    type: "number",
+    width: 170,
+  },
+  {
+    field: "flashedEnemiesDuration",
+    headerName: "Czas oślepienia przeciwników",
+    type: "number",
+    width: 220,
+  },
 ];
 
 export default function Table() {
@@ -25,6 +52,13 @@ export default function Table() {
           kills: p.kills,
           assists: p.assists,
           deaths: p.deaths,
+          kd: p.kd,
+          killsPerRound: p.killsPerRound,
+          damage: p.damage,
+          adr: p.adr,
+          kast: p.kast,
+          flashedEnemies: p.flashedEnemies,
+          flashedEnemiesDuration: p.flashedEnemiesDuration,
         });
       });
       game.teams.lastCTSide.players.forEach((p, i) => {
@@ -35,6 +69,13 @@ export default function Table() {
           kills: p.kills,
           assists: p.assists,
           deaths: p.deaths,
+          kd: p.kd,
+          killsPerRound: p.killsPerRound,
+          damage: p.damage,
+          adr: p.adr,
+          kast: p.kast,
+          flashedEnemies: p.flashedEnemies,
+          flashedEnemiesDuration: p.flashedEnemiesDuration,
         });
       });
 

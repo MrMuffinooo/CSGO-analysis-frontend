@@ -66,7 +66,19 @@ export function Main() {
       <div style={{ display: tabIsMecz ? "none" : "block" }}>
         <RoundInfo />
         <PredictionBar tick={tick} />
-        <Container>
+        <Container
+          style={{
+            boxShadow:
+              round.bomb.state[tick] === 1
+                ? "inset 0px 0px 32px 14px rgba(227, 0, 0, 1)"
+                : round.bomb.state[tick] === 2
+                ? "inset 0px 0px 32px 14px rgba(0, 227, 0, 1)"
+                : "none",
+            transitionProperty: "box-shadow",
+            transitionTimingFunction: "ease-in-out",
+            transitionDuration: "1000ms",
+          }}
+        >
           <SideRadar isLeft={true} tick={tick} />
           <Radar tick={tick} tab={tabIsMecz} />
           <SideRadar isLeft={false} tick={tick} />
