@@ -19,6 +19,10 @@ const Container = styled.div`
   justify-content: center;
   overflow: hidden;
   position: relative;
+
+  transition-property: box-shadow;
+  transition-timing-function: ease-in-out;
+  transition-duration: "1000ms";
 `;
 
 const Banner = styled.div`
@@ -41,12 +45,23 @@ const MapBanner = styled.div`
   border-bottom: 2px solid black;
 `;
 
-export function Main() {
-  const [tick, setTick] = useState(0);
+export function Main({ canPlay, tick, setTick }) {
   const [tabIsMecz, setTabIsMecz] = useState(true);
 
   const game = useContext(GameContext);
   const round = useContext(RoundContext);
+
+  var boxShadow = "none";
+
+  if (round.bomb) {
+    if (round.bomb.state[tick] === 1) {
+      boxShadow = "inset 0px 0px 32px 14px rgba(227, 0, 0, 1)";
+    } else if (round.bomb.state[tick] === 2) {
+      boxShadow = "inset 0px 0px 32px 14px rgba(0, 227, 0, 1)";
+    } else {
+      boxShadow = "none";
+    }
+  }
 
   return (
     <div>
@@ -68,15 +83,7 @@ export function Main() {
         <PredictionBar tick={tick} />
         <Container
           style={{
-            boxShadow:
-              round.bomb.state[tick] === 1
-                ? "inset 0px 0px 32px 14px rgba(227, 0, 0, 1)"
-                : round.bomb.state[tick] === 2
-                ? "inset 0px 0px 32px 14px rgba(0, 227, 0, 1)"
-                : "none",
-            transitionProperty: "box-shadow",
-            transitionTimingFunction: "ease-in-out",
-            transitionDuration: "1000ms",
+            boxShadow: boxShadow,
           }}
         >
           <SideRadar isLeft={true} tick={tick} />
@@ -88,6 +95,7 @@ export function Main() {
           tick={tick}
           setTick={setTick}
           len={round.length ? round.length : -1}
+          canPlay={canPlay && !tabIsMecz}
         />
       </div>
       <div style={{ display: !tabIsMecz ? "none" : "block" }}>
