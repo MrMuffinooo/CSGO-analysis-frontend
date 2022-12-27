@@ -3,7 +3,7 @@ import styled from "styled-components";
 import bomb from "../assets/icons/bomb-dropped.png";
 import defused from "../assets/icons/bomb-defused.png";
 import planted from "../assets/icons/bomb-planted.png";
-import { GameContext } from "./contexts/GameContext";
+import { GameContext } from "./Contexts";
 import { getMapMeta } from "../utils/getMapMeta";
 import { TICK_LENGTH } from "../utils/constans";
 

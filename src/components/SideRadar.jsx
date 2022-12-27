@@ -1,8 +1,8 @@
 import React from "react";
 import { useContext } from "react";
 import styled from "styled-components";
-import { GameContext } from "./contexts/GameContext";
-import { RoundContext } from "./contexts/RoundContext";
+
+import { GameContext, RoundContext } from "./Contexts";
 import { PlayerStatus } from "./PlayerStatus";
 
 const Container = styled.div`

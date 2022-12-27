@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React, { useContext } from "react";
-import { RoundContext } from "./contexts/RoundContext";
+import { RoundContext } from "./Contexts";
 import { COLOR_CT, COLOR_T, TICK_LENGTH } from "../utils/constans";
 
 const Container = styled.div`

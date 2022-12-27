@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React, { useContext, useEffect, useState } from "react";
 import arrow from "../assets/icons/arrow.png";
 import { getRoundData } from "../utils/getRound";
-import { GameContext } from "./contexts/GameContext";
+import { GameContext } from "./Contexts";
 import { RoundListing } from "./RoundListing";
 
 const ListingContainer = styled.div`

@@ -1,9 +1,8 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { useContext } from "react";
-import { RoundContext } from "./contexts/RoundContext";
+import { RoundContext, GameContext } from "./Contexts";
 import Player from "./Player";
 import Bomb from "./Bomb";
-import { GameContext } from "./contexts/GameContext";
 import { Grenade } from "./Grenade";
 
 export function Radar({ tick, tab }) {

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { COLOR_CT, COLOR_T } from "../utils/constans";
-import { RoundContext } from "./contexts/RoundContext";
+import { RoundContext } from "./Contexts";
 
 const Container = styled.div`
   display: flex;

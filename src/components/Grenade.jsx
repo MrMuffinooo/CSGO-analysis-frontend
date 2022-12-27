@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { getMapMeta } from "../utils/getMapMeta";
-import { GameContext } from "./contexts/GameContext";
+import { GameContext } from "./Contexts";
 import he from "../assets/icons/grenades/he.png";
 import fire from "../assets/icons/grenades/fire.png";
 import flash from "../assets/icons/grenades/flash.png";

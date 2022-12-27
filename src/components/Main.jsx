@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useContext } from "react";
 import styled from "styled-components";
-import { GameContext } from "./contexts/GameContext";
+import { GameContext, RoundContext } from "./Contexts";
 import { Controls } from "./Controls";
 import { Radar } from "./Radar";
-import { RoundContext } from "./contexts/RoundContext";
 import { BannerContent } from "./BannerContent";
 import { RoundInfo } from "./RoundInfo";
 import { SideRadar } from "./SideRadar";
