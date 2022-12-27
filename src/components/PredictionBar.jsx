@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 
 import { COLOR_CT, COLOR_T, TICK_LENGTH } from "../utils/constans";
-import { RoundContext, Tick } from "./Contexts";
+import { RoundContext, TickContext } from "./Contexts";
 
 const Container = styled.div`
   height: 75px;
@@ -50,7 +50,7 @@ const Middle = styled.div`
 
 export function PredictionBar() {
   const round = useContext(RoundContext);
-  const tick = useContext(Tick);
+  const tick = useContext(TickContext);
 
   if (!round.CTpredictions) {
     return;

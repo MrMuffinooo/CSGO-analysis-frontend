@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 import { COLOR_SECONDARY } from "../utils/constans";
+import { SetIsPlayingContext, SetTickContext } from "./Contexts";
+import { useContext } from "react";
 
 const ListingContainer = styled.div`
   display: flex;
@@ -19,8 +21,13 @@ export function RoundListing({
   setSelectedRound,
   getRound,
 }) {
+  const setIsPlaying = useContext(SetIsPlayingContext);
+  const setTick = useContext(SetTickContext);
+
   const handleClick = () => {
     if (selectedRound !== no) {
+      setIsPlaying(false);
+      setTick(0);
       setSelectedRound(no);
       getRound();
     }

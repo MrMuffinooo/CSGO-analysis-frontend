@@ -8,8 +8,8 @@ import { TICK_LENGTH } from "../utils/constans";
 import {
   IsPlayingContext,
   SetIsPlayingContext,
-  SetTick,
-  Tick,
+  SetTickContext,
+  TickContext,
 } from "./Contexts";
 import { Predictions } from "./Predictions";
 
@@ -80,8 +80,8 @@ const Button = styled.button`
 export function Controls({ len }) {
   const isPlaying = useContext(IsPlayingContext);
   const setIsPlaying = useContext(SetIsPlayingContext);
-  const tick = useContext(Tick);
-  const setTick = useContext(SetTick);
+  const tick = useContext(TickContext);
+  const setTick = useContext(SetTickContext);
 
   var id = null;
   useEffect(() => {

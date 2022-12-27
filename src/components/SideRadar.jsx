@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import styled from "styled-components";
 
-import { GameContext, RoundContext, Tick } from "./Contexts";
+import { GameContext, RoundContext, TickContext } from "./Contexts";
 import { PlayerStatus } from "./PlayerStatus";
 
 const Container = styled.div`
@@ -16,7 +16,7 @@ const Container = styled.div`
 export function SideRadar({ isLeft }) {
   const game = useContext(GameContext);
   const round = useContext(RoundContext);
-  const tick = useContext(Tick);
+  const tick = useContext(TickContext);
 
   const listPlayers = (array) => {
     return array

@@ -4,7 +4,12 @@ import styled from "styled-components";
 
 import { BannerContent } from "./BannerContent";
 import Clock from "./Clock";
-import { GameContext, RoundContext, SetIsPlayingContext, Tick } from "./Contexts";
+import {
+  GameContext,
+  RoundContext,
+  SetIsPlayingContext,
+  TickContext,
+} from "./Contexts";
 import { Controls } from "./Controls";
 import { PredictionBar } from "./PredictionBar";
 import { Radar } from "./Radar";
@@ -51,7 +56,7 @@ export function Main() {
   const game = useContext(GameContext);
   const round = useContext(RoundContext);
   const setIsPlaying = useContext(SetIsPlayingContext);
-  const tick = useContext(Tick);
+  const tick = useContext(TickContext);
 
   var boxShadow = "none";
 

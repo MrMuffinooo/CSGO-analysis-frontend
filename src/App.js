@@ -7,8 +7,8 @@ import {
   IsPlayingContext,
   RoundContext,
   SetIsPlayingContext,
-  SetTick,
-  Tick,
+  SetTickContext,
+  TickContext,
 } from "./components/Contexts";
 import { Main } from "./components/Main";
 import { Nav } from "./components/Nav";
@@ -53,8 +53,8 @@ function App() {
         <RoundContext.Provider value={round}>
           <IsPlayingContext.Provider value={isPlaying}>
             <SetIsPlayingContext.Provider value={setIsPlaying}>
-              <Tick.Provider value={tick}>
-                <SetTick.Provider value={setTick}>
+              <TickContext.Provider value={tick}>
+                <SetTickContext.Provider value={setTick}>
                   <Article>
                     <Main />
                     <Burger
@@ -69,8 +69,8 @@ function App() {
                     setRound={setRound}
                     navIsHidden={navIsHidden}
                   />
-                </SetTick.Provider>
-              </Tick.Provider>
+                </SetTickContext.Provider>
+              </TickContext.Provider>
             </SetIsPlayingContext.Provider>
           </IsPlayingContext.Provider>
         </RoundContext.Provider>
