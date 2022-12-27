@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { useContext } from "react";
 import styled from "styled-components";
-import { GameContext, RoundContext } from "./Contexts";
-import { Controls } from "./Controls";
-import { Radar } from "./Radar";
+
 import { BannerContent } from "./BannerContent";
+import Clock from "./Clock";
+import { GameContext, RoundContext, SetIsPlayingContext, Tick } from "./Contexts";
+import { Controls } from "./Controls";
+import { PredictionBar } from "./PredictionBar";
+import { Radar } from "./Radar";
 import { RoundInfo } from "./RoundInfo";
 import { SideRadar } from "./SideRadar";
-import { Tabs } from "./Tabs";
-import { PredictionBar } from "./PredictionBar";
 import Table from "./Table";
-import Clock from "./Clock";
+import { Tabs } from "./Tabs";
 
 const Container = styled.div`
   display: flex;
@@ -44,11 +45,13 @@ const MapBanner = styled.div`
   border-bottom: 2px solid black;
 `;
 
-export function Main({ canPlay, tick, setTick }) {
+export function Main() {
   const [tabIsMecz, setTabIsMecz] = useState(true);
 
   const game = useContext(GameContext);
   const round = useContext(RoundContext);
+  const setIsPlaying = useContext(SetIsPlayingContext);
+  const tick = useContext(Tick);
 
   var boxShadow = "none";
 
@@ -74,28 +77,26 @@ export function Main({ canPlay, tick, setTick }) {
       </MapBanner>
       <Tabs
         tabIsMecz={tabIsMecz}
-        handleMeczClick={() => setTabIsMecz(true)}
+        handleMeczClick={() => {
+          setTabIsMecz(true);
+          setIsPlaying(false);
+        }}
         handleRundaClick={() => setTabIsMecz(false)}
       />
       <div style={{ display: tabIsMecz ? "none" : "block" }}>
         <RoundInfo />
-        <PredictionBar tick={tick} />
+        <PredictionBar />
         <Container
           style={{
             boxShadow: boxShadow,
           }}
         >
-          <SideRadar isLeft={true} tick={tick} />
-          <Radar tick={tick} tab={tabIsMecz} />
-          <SideRadar isLeft={false} tick={tick} />
+          <SideRadar isLeft={true} />
+          <Radar tab={tabIsMecz} />
+          <SideRadar isLeft={false} />
           {round.clockTime && <Clock clock={round.clockTime[tick]} />}
         </Container>
-        <Controls
-          tick={tick}
-          setTick={setTick}
-          len={round.length ? round.length : -1}
-          canPlay={canPlay && !tabIsMecz}
-        />
+        <Controls len={round.length ? round.length : -1} />
       </div>
       <div style={{ display: !tabIsMecz ? "none" : "block" }}>
         <Table />

@@ -1,14 +1,16 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { useContext } from "react";
-import { RoundContext, GameContext } from "./Contexts";
-import Player from "./Player";
-import Bomb from "./Bomb";
-import { Grenade } from "./Grenade";
 
-export function Radar({ tick, tab }) {
+import Bomb from "./Bomb";
+import { GameContext, RoundContext, Tick } from "./Contexts";
+import { Grenade } from "./Grenade";
+import Player from "./Player";
+
+export function Radar({ tab }) {
   const ref = useRef({ current: { offsetWidth: 1024 } });
   const round = useContext(RoundContext);
   const game = useContext(GameContext);
+  const tick = useContext(Tick);
   const [width, setWidth] = useState(1024);
   // useEffect(() => {
   //   console.log("width", ref.current ? ref.current.offsetWidth : 0);
@@ -44,7 +46,6 @@ export function Radar({ tick, tab }) {
               slice={e.radarSlice}
               start={e.start}
               end={e.end}
-              tick={tick}
               type={e.type}
               radarWidth={width}
             />

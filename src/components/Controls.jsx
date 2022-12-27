@@ -1,10 +1,17 @@
 import { Slider } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import { TICK_LENGTH } from "../utils/constans";
-import { Predictions } from "./Predictions";
+
 import arrow from "../assets/icons/arrow.png";
 import pause from "../assets/icons/pause.png";
+import { TICK_LENGTH } from "../utils/constans";
+import {
+  IsPlayingContext,
+  SetIsPlayingContext,
+  SetTick,
+  Tick,
+} from "./Contexts";
+import { Predictions } from "./Predictions";
 
 const PlayerContainer = styled.div`
   display: flex;
@@ -70,8 +77,11 @@ const Button = styled.button`
   background-position: center;
 `;
 
-export function Controls({ tick, setTick, len }) {
-  const [isPlaying, setIsPlaying] = useState(false);
+export function Controls({ len }) {
+  const isPlaying = useContext(IsPlayingContext);
+  const setIsPlaying = useContext(SetIsPlayingContext);
+  const tick = useContext(Tick);
+  const setTick = useContext(SetTick);
 
   var id = null;
   useEffect(() => {

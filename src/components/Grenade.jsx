@@ -1,13 +1,15 @@
 import React, { useContext, useState } from "react";
-import { getMapMeta } from "../utils/getMapMeta";
-import { GameContext } from "./Contexts";
-import he from "../assets/icons/grenades/he.png";
+
 import fire from "../assets/icons/grenades/fire.png";
 import flash from "../assets/icons/grenades/flash.png";
+import he from "../assets/icons/grenades/he.png";
 import smoke from "../assets/icons/grenades/smoke.png";
+import { getMapMeta } from "../utils/getMapMeta";
+import { GameContext, Tick } from "./Contexts";
 
-export function Grenade({ x, y, type, start, end, tick, slice, radarWidth }) {
+export function Grenade({ x, y, type, start, end, slice, radarWidth }) {
   const game = useContext(GameContext);
+  const tick = useContext(Tick);
 
   const [resolution, setResolution] = useState(5.0);
   const [offsetX, setOffsetX] = useState(2500);

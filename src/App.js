@@ -1,14 +1,17 @@
-import styled from "styled-components";
-import { Nav } from "./components/Nav";
-import { Main } from "./components/Main";
 import { useState } from "react";
+import styled from "styled-components";
+
 import burger from "./assets/icons/burger.png";
 import {
   GameContext,
   IsPlayingContext,
-  SetIsPlayingContext,
   RoundContext,
+  SetIsPlayingContext,
+  SetTick,
+  Tick,
 } from "./components/Contexts";
+import { Main } from "./components/Main";
+import { Nav } from "./components/Nav";
 
 const Container = styled.div`
   width: 100%;
@@ -42,6 +45,7 @@ function App() {
   const [round, setRound] = useState({});
   const [navIsHidden, setNavIsHidden] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [tick, setTick] = useState(false);
 
   return (
     <Container>
@@ -49,18 +53,24 @@ function App() {
         <RoundContext.Provider value={round}>
           <IsPlayingContext.Provider value={isPlaying}>
             <SetIsPlayingContext.Provider value={setIsPlaying}>
-              <Article>
-                <Main />
-                <Burger
-                  onClick={() => setNavIsHidden((navIsHidden) => !navIsHidden)}
-                />
-              </Article>
+              <Tick.Provider value={tick}>
+                <SetTick.Provider value={setTick}>
+                  <Article>
+                    <Main />
+                    <Burger
+                      onClick={() =>
+                        setNavIsHidden((navIsHidden) => !navIsHidden)
+                      }
+                    />
+                  </Article>
 
-              <Nav
-                setGame={setGame}
-                setRound={setRound}
-                navIsHidden={navIsHidden}
-              />
+                  <Nav
+                    setGame={setGame}
+                    setRound={setRound}
+                    navIsHidden={navIsHidden}
+                  />
+                </SetTick.Provider>
+              </Tick.Provider>
             </SetIsPlayingContext.Provider>
           </IsPlayingContext.Provider>
         </RoundContext.Provider>
