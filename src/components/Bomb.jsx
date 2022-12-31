@@ -55,7 +55,7 @@ function Player({ x, y, state, slice, radarWidth }) {
     (10 / 1024) * radarWidth;
 
   const bombIcon = `url(${
-    state === 0 ? bomb : state === 1 ? planted : defused
+    state === 0 ? bomb : state === 1 ? planted : state === 2 ? defused : bomb
   })`;
 
   return (
