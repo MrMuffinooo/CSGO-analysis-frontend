@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { GameContext } from "./Contexts";
+import { GameContext } from "../utils/Contexts";
 
 const columns = [
   { field: "team", headerName: "Drużyna", width: 70 },

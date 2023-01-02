@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { COLOR_CT, COLOR_T } from "../utils/constans";
-import { RoundContext } from "./Contexts";
+import { RoundContext } from "../utils/Contexts";
 
 const CTBox = styled.div`
   background-color: ${COLOR_CT};

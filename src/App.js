@@ -8,8 +8,7 @@ import {
   RoundContext,
   SetIsPlayingContext,
   SetTickContext,
-  TickContext,
-} from "./components/Contexts";
+} from "./utils/Contexts";
 import { Main } from "./components/Main";
 import { Nav } from "./components/Nav";
 

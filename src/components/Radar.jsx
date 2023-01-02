@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import { useContext } from "react";
 
 import Bomb from "./Bomb";
-import { GameContext, RoundContext, TickContext } from "./Contexts";
+import { GameContext, RoundContext } from "../utils/Contexts";
 import { Grenade } from "./Grenade";
 import Player from "./Player";
 

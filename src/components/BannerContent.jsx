@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React, { useContext } from "react";
 
 import { COLOR_CT, COLOR_T } from "../utils/constans";
-import { GameContext, RoundContext } from "./Contexts";
+import { GameContext, RoundContext } from "../utils/Contexts";
 
 const BannerChild = styled.div`
   display: flex;

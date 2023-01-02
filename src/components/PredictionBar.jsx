@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 
 import { COLOR_CT, COLOR_T, TICK_LENGTH } from "../utils/constans";
-import { RoundContext, TickContext } from "./Contexts";
+import { RoundContext } from "../utils/Contexts";
 
 const Container = styled.div`
   height: 75px;

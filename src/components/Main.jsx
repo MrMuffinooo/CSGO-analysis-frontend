@@ -8,8 +8,7 @@ import {
   GameContext,
   RoundContext,
   SetIsPlayingContext,
-  TickContext,
-} from "./Contexts";
+} from "../utils/Contexts";
 import { Controls } from "./Controls";
 import { PredictionBar } from "./PredictionBar";
 import { Radar } from "./Radar";

@@ -1,5 +1,5 @@
 import { Slider } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 
 import arrow from "../assets/icons/arrow.png";
@@ -9,8 +9,7 @@ import {
   IsPlayingContext,
   SetIsPlayingContext,
   SetTickContext,
-  TickContext,
-} from "./Contexts";
+} from "../utils/Contexts";
 import { Predictions } from "./Predictions";
 
 const PlayerContainer = styled.div`

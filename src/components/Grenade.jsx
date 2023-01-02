@@ -5,7 +5,7 @@ import flash from "../assets/icons/grenades/flash.png";
 import he from "../assets/icons/grenades/he.png";
 import smoke from "../assets/icons/grenades/smoke.png";
 import { getMapMeta } from "../utils/getMapMeta";
-import { GameContext, TickContext } from "./Contexts";
+import { GameContext } from "../utils/Contexts";
 
 export function Grenade({ x, y, type, start, end, slice, radarWidth, tick }) {
   const game = useContext(GameContext);

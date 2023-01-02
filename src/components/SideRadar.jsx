@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import styled from "styled-components";
 
-import { GameContext, RoundContext, TickContext } from "./Contexts";
+import { GameContext, RoundContext } from "../utils/Contexts";
 import { PlayerStatus } from "./PlayerStatus";
 
 const Container = styled.div`

@@ -10,7 +10,7 @@ import ctIconFire from "../assets/icons/ctIcon_fire.png";
 import ctIconFlashFire from "../assets/icons/ctIcon_fire_flash.png";
 import tIconFlashFire from "../assets/icons/tIcon_fire_flash.png";
 import ctDead from "../assets/icons/ctDead.png";
-import { GameContext } from "./Contexts";
+import { GameContext } from "../utils/Contexts";
 import { getMapMeta } from "../utils/getMapMeta.jsx";
 import { TICK_LENGTH } from "../utils/constans";
 

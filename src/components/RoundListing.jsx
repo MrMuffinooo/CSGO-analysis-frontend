@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { COLOR_SECONDARY } from "../utils/constans";
-import { SetIsPlayingContext, SetTickContext } from "./Contexts";
+import { SetIsPlayingContext, SetTickContext } from "../utils/Contexts";
 import { useContext } from "react";
 
 const ListingContainer = styled.div`

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { RoundContext } from "./Contexts";
+import { RoundContext } from "../utils/Contexts";
 
 const Container = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap");
