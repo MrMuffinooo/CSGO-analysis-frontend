@@ -48,9 +48,8 @@ const Middle = styled.div`
   z-index: 2;
 `;
 
-export function PredictionBar() {
+export function PredictionBar({ tick }) {
   const round = useContext(RoundContext);
-  const tick = useContext(TickContext);
 
   if (!round.CTpredictions) {
     return;

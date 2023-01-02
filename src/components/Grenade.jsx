@@ -7,9 +7,8 @@ import smoke from "../assets/icons/grenades/smoke.png";
 import { getMapMeta } from "../utils/getMapMeta";
 import { GameContext, TickContext } from "./Contexts";
 
-export function Grenade({ x, y, type, start, end, slice, radarWidth }) {
+export function Grenade({ x, y, type, start, end, slice, radarWidth, tick }) {
   const game = useContext(GameContext);
-  const tick = useContext(TickContext);
 
   const [resolution, setResolution] = useState(5.0);
   const [offsetX, setOffsetX] = useState(2500);

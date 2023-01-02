@@ -6,11 +6,10 @@ import { GameContext, RoundContext, TickContext } from "./Contexts";
 import { Grenade } from "./Grenade";
 import Player from "./Player";
 
-export function Radar({ tab }) {
+export function Radar({ tab, tick }) {
   const ref = useRef({ current: { offsetWidth: 1024 } });
   const round = useContext(RoundContext);
   const game = useContext(GameContext);
-  const tick = useContext(TickContext);
   const [width, setWidth] = useState(1024);
   // useEffect(() => {
   //   console.log("width", ref.current ? ref.current.offsetWidth : 0);
@@ -48,6 +47,7 @@ export function Radar({ tab }) {
               end={e.end}
               type={e.type}
               radarWidth={width}
+              tick={tick}
             />
           );
         })}

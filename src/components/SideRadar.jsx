@@ -13,10 +13,9 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-export function SideRadar({ isLeft }) {
+export function SideRadar({ isLeft, tick }) {
   const game = useContext(GameContext);
   const round = useContext(RoundContext);
-  const tick = useContext(TickContext);
 
   const listPlayers = (array) => {
     return array

@@ -77,10 +77,9 @@ const Button = styled.button`
   background-position: center;
 `;
 
-export function Controls({ len }) {
+export function Controls({ len, tick }) {
   const isPlaying = useContext(IsPlayingContext);
   const setIsPlaying = useContext(SetIsPlayingContext);
-  const tick = useContext(TickContext);
   const setTick = useContext(SetTickContext);
 
   var id = null;

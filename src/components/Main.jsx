@@ -50,13 +50,12 @@ const MapBanner = styled.div`
   border-bottom: 2px solid black;
 `;
 
-export function Main() {
+export function Main({ tick }) {
   const [tabIsMecz, setTabIsMecz] = useState(true);
 
   const game = useContext(GameContext);
   const round = useContext(RoundContext);
   const setIsPlaying = useContext(SetIsPlayingContext);
-  const tick = useContext(TickContext);
 
   var boxShadow = "none";
 
@@ -90,18 +89,18 @@ export function Main() {
       />
       <div style={{ display: tabIsMecz ? "none" : "block" }}>
         <RoundInfo />
-        <PredictionBar />
+        <PredictionBar tick={tick} />
         <Container
           style={{
             boxShadow: boxShadow,
           }}
         >
-          <SideRadar isLeft={true} />
-          <Radar tab={tabIsMecz} />
-          <SideRadar isLeft={false} />
+          <SideRadar isLeft={true} tick={tick} />
+          <Radar tab={tabIsMecz} tick={tick} />
+          <SideRadar isLeft={false} tick={tick} />
           {round.clockTime && <Clock clock={round.clockTime[tick]} />}
         </Container>
-        <Controls len={round.length ? round.length : -1} />
+        <Controls len={round.length ? round.length : -1} tick={tick} />
       </div>
       <div style={{ display: !tabIsMecz ? "none" : "block" }}>
         <Table />

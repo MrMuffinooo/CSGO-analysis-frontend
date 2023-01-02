@@ -53,24 +53,22 @@ function App() {
         <RoundContext.Provider value={round}>
           <IsPlayingContext.Provider value={isPlaying}>
             <SetIsPlayingContext.Provider value={setIsPlaying}>
-              <TickContext.Provider value={tick}>
-                <SetTickContext.Provider value={setTick}>
-                  <Article>
-                    <Main />
-                    <Burger
-                      onClick={() =>
-                        setNavIsHidden((navIsHidden) => !navIsHidden)
-                      }
-                    />
-                  </Article>
-
-                  <Nav
-                    setGame={setGame}
-                    setRound={setRound}
-                    navIsHidden={navIsHidden}
+              <SetTickContext.Provider value={setTick}>
+                <Article>
+                  <Main tick={tick} />
+                  <Burger
+                    onClick={() =>
+                      setNavIsHidden((navIsHidden) => !navIsHidden)
+                    }
                   />
-                </SetTickContext.Provider>
-              </TickContext.Provider>
+                </Article>
+
+                <Nav
+                  setGame={setGame}
+                  setRound={setRound}
+                  navIsHidden={navIsHidden}
+                />
+              </SetTickContext.Provider>
             </SetIsPlayingContext.Provider>
           </IsPlayingContext.Provider>
         </RoundContext.Provider>
