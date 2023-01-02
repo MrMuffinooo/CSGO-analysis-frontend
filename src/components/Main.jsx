@@ -17,6 +17,7 @@ import { RoundInfo } from "./RoundInfo";
 import { SideRadar } from "./SideRadar";
 import Table from "./Table";
 import { Tabs } from "./Tabs";
+import { Verdict } from "./Verdict";
 
 const Container = styled.div`
   display: flex;
@@ -95,6 +96,7 @@ export function Main({ tick }) {
             boxShadow: boxShadow,
           }}
         >
+          <Verdict />
           <SideRadar isLeft={true} tick={tick} />
           <Radar tab={tabIsMecz} tick={tick} />
           <SideRadar isLeft={false} tick={tick} />
