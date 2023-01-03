@@ -96,7 +96,7 @@ export function Main({ tick }) {
             boxShadow: boxShadow,
           }}
         >
-          <Verdict />
+          <Verdict tick={tick} />
           <SideRadar isLeft={true} tick={tick} />
           <Radar tab={tabIsMecz} tick={tick} />
           <SideRadar isLeft={false} tick={tick} />

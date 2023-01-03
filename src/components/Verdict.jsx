@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { RoundContext } from "../utils/Contexts";
+import { COLOR_CT, COLOR_T } from "../utils/constans";
 
 const Container = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap");
@@ -14,7 +15,7 @@ const Container = styled.div`
 export function Verdict({ tick }) {
   const round = useContext(RoundContext);
 
-  if (!round.winningMoment || round.winningMoment < tick) return;
+  if (!round.winningMoment || round.winningMoment > tick) return;
 
   const team = round.winningSide === "CT" ? "Antyterroryści" : "Terroryści";
   const condition =
@@ -26,7 +27,15 @@ export function Verdict({ tick }) {
       ? "wysadzenie celu"
       : "rozbrojenie bomby";
 
-  const verdict = "Wygrywają " + { team } + " przez " + { condition };
+  const verdict = "Wygrywają " + team + " przez " + condition;
 
-  return <Container>{verdict}</Container>;
+  return (
+    <Container>
+      Wygrywają{" "}
+      <span style={{ color: round.winningSide === "CT" ? COLOR_CT : COLOR_T }}>
+        {team}
+      </span>{" "}
+      przez {condition}
+    </Container>
+  );
 }
