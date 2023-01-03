@@ -18,6 +18,7 @@ const Container = styled.div`
 const NoContainer = styled.div`
   width: 25px;
   text-align: center;
+  font-weight: bold;
 `;
 
 const TopHalf = styled.div`
@@ -51,6 +52,7 @@ const ImgContainer = styled.div`
 
 const NameContainer = styled.div`
   flex-grow: 1;
+  font-weight: bold;
 `;
 
 const Img = styled.img`
