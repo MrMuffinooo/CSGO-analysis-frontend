@@ -41,8 +41,6 @@ export function Nav({ setGame, setRound, navIsHidden }) {
   const [whoIsOpen, setWhoIsOpen] = useState(-1);
   const [selectedRound, setSelectedRound] = useState(-1);
 
-  console.log(navIsHidden);
-
   return (
     <Container
       style={{

@@ -45,13 +45,31 @@ const Right = styled.div`
   width: 40%;
 `;
 
+const Ul = styled.ul`
+  &:hover {
+    background-color: #eee;
+  }
+  transition-property: background-color;
+  transition-timing-function: ease-in;
+  transition-duration: 150ms;
+`;
+
+const Li = styled.ul`
+  &:hover {
+    background-color: #eee;
+  }
+  transition-property: background-color;
+  transition-timing-function: ease-in;
+  transition-duration: 150ms;
+`;
+
 export function Instructions() {
   return (
     <Container>
       <Left>
         <Header style={{ textAlign: "right" }}>Statystyki</Header>
 
-        <ul>
+        <Ul>
           <li>K - Zabójstwa</li>
           <li>A - Asysty</li>
           <li>D - Śmierci</li>
@@ -61,13 +79,13 @@ export function Instructions() {
             KAST - procent rund, w których gracz uzyskał zabójstwo, asystę, nie
             umarł lub został pomszczony
           </li>
-        </ul>
+        </Ul>
       </Left>
       <Right>
         <Header style={{ textAlign: "left" }}>Ikony</Header>
 
         <ul style={{ listStyleType: "none" }}>
-          <li>
+          <Li>
             Bomba:{" "}
             <ul style={{ listStyleType: "none", marginTop: "20px" }}>
               <li>
@@ -75,8 +93,8 @@ export function Instructions() {
                 Bomba niepodłożona, podłożona, rozbrojona
               </li>
             </ul>
-          </li>
-          <li style={{ marginTop: "30px" }}>
+          </Li>
+          <Li style={{ marginTop: "30px" }}>
             Gracze:{" "}
             <ul style={{ listStyleType: "none", marginTop: "20px" }}>
               <li>
@@ -99,8 +117,8 @@ export function Instructions() {
                 <Img src={tDead} /> <Img src={ctDead} /> - Martwy gracz
               </li>
             </ul>
-          </li>
-          <li style={{ marginTop: "30px" }}>
+          </Li>
+          <Li style={{ marginTop: "30px" }}>
             Ekwipunek:{" "}
             <ul style={{ listStyleType: "none", marginTop: "20px" }}>
               <li>
@@ -115,8 +133,8 @@ export function Instructions() {
                 kuloodpornej
               </li>
             </ul>
-          </li>
-          <li style={{ marginTop: "30px" }}>
+          </Li>
+          <Li style={{ marginTop: "30px" }}>
             Granaty:{" "}
             <ul style={{ listStyleType: "none", marginTop: "20px" }}>
               <li>
@@ -132,7 +150,7 @@ export function Instructions() {
                 <Img src={fire} /> - Granat zapalający
               </li>
             </ul>
-          </li>
+          </Li>
         </ul>
       </Right>
     </Container>
