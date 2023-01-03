@@ -17,6 +17,7 @@ import { SideRadar } from "./SideRadar";
 import Table from "./Table";
 import { Tabs } from "./Tabs";
 import { Verdict } from "./Verdict";
+import { Instructions } from "./Instructions";
 
 const Container = styled.div`
   display: flex;
@@ -105,6 +106,7 @@ export function Main({ tick }) {
       </div>
       <div style={{ display: !tabIsMecz ? "none" : "block" }}>
         <Table />
+        <Instructions />
       </div>
     </div>
   );
