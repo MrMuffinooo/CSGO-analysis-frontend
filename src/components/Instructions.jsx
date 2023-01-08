@@ -68,7 +68,6 @@ export function Instructions() {
     <Container>
       <Left>
         <Header style={{ textAlign: "right" }}>Statystyki</Header>
-
         <Ul>
           <li>K - Zabójstwa</li>
           <li>A - Asysty</li>
@@ -80,6 +79,8 @@ export function Instructions() {
             umarł lub został pomszczony
           </li>
         </Ul>
+        Po najechaniu myszką na status gracza pokazuje się ocena przez model
+        zsumowana po akcjach.
       </Left>
       <Right>
         <Header style={{ textAlign: "left" }}>Ikony</Header>
