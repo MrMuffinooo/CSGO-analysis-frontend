@@ -28,7 +28,7 @@ const Container = styled.div`
 
   transition-property: box-shadow;
   transition-timing-function: ease-in-out;
-  transition-duration: "1000ms";
+  transition-duration: 1000ms;
 `;
 
 const Banner = styled.div`
