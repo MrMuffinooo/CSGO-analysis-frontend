@@ -35,6 +35,12 @@ const columns = [
     type: "number",
     width: 220,
   },
+  {
+    field: "rating",
+    headerName: "Ocena gracza przez model",
+    type: "number",
+    width: 220,
+  },
 ];
 
 export default function Table() {
@@ -59,6 +65,7 @@ export default function Table() {
           kast: p.kast,
           flashedEnemies: p.flashedEnemies,
           flashedEnemiesDuration: p.flashedEnemiesDuration,
+          rating: p.rating * 100,
         });
       });
       game.teams.lastCTSide.players.forEach((p, i) => {
@@ -76,6 +83,7 @@ export default function Table() {
           kast: p.kast,
           flashedEnemies: p.flashedEnemies,
           flashedEnemiesDuration: p.flashedEnemiesDuration,
+          rating: p.rating * 100,
         });
       });
 

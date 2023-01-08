@@ -75,11 +75,7 @@ export function Main({ tick }) {
       <Banner>
         <BannerContent tabIsMecz={tabIsMecz} />
       </Banner>
-      <MapBanner>
-        {game.map ? game.map : ""}
-        {"  "}
-        {tick}
-      </MapBanner>
+      <MapBanner>{game.map ? game.map : ""}</MapBanner>
       <Tabs
         tabIsMecz={tabIsMecz}
         handleMeczClick={() => {
