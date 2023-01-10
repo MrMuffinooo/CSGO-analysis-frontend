@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { COLOR_CT, COLOR_T, TICK_LENGTH } from "../utils/constans";
+import { COLOR_CT, COLOR_T } from "../utils/constans";
 import armorIMG from "../assets/icons/armor.png";
 import helmetIMG from "../assets/icons/helmet.png";
 import defIMG from "../assets/icons/def.png";
+import { FrameLengthContext } from "../utils/Contexts";
 
 const Ratings = styled.div`
   position: absolute;
@@ -83,7 +84,6 @@ const HealthIndicator = styled.div`
 
   transition-property: width;
   transition-timing-function: ease-out;
-  transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
 `;
 
 const Rating = styled.div``;
@@ -106,6 +106,8 @@ export function PlayerStatus({
   rating,
   ratings,
 }) {
+  const frameLength = useContext(FrameLengthContext);
+
   return (
     <Container>
       <Ratings
@@ -189,6 +191,7 @@ export function PlayerStatus({
           left: isLeft ? "inherit" : "0",
           right: isLeft ? "0" : "inherit",
           backgroundColor: isT ? COLOR_T : COLOR_CT,
+          transitionDuration: `${frameLength}ms`,
         }}
       />
     </Container>

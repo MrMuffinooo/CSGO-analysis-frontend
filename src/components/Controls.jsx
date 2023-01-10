@@ -1,12 +1,14 @@
 import { Slider } from "@mui/material";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
 import arrow from "../assets/icons/arrow.png";
 import pause from "../assets/icons/pause.png";
-import { TICK_LENGTH } from "../utils/constans";
 import {
+  FrameLengthContext,
   IsPlayingContext,
+  SetFrameLengthContext,
   SetIsPlayingContext,
   SetTickContext,
 } from "../utils/Contexts";
@@ -25,13 +27,11 @@ const Container = styled.div`
   & .MuiSlider-thumb {
     transition-property: left;
     transition-timing-function: linear;
-    transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
   }
 
   & .MuiSlider-track {
     transition-property: width;
     transition-timing-function: linear;
-    transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
   }
 `;
 
@@ -45,7 +45,6 @@ const Indicator = styled.div`
 
   transition-property: left;
   transition-timing-function: linear;
-  transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
 `;
 
 const Divider = styled.div`
@@ -111,12 +110,32 @@ export function Controls({ len, tick }) {
   const isPlaying = useContext(IsPlayingContext);
   const setIsPlaying = useContext(SetIsPlayingContext);
   const setTick = useContext(SetTickContext);
+  const frameLength = useContext(FrameLengthContext);
+  const setFrameLength = useContext(SetFrameLengthContext);
   const [speed, setSpeed] = useState(250);
   const [showImportant, setShowImportant] = useState(false);
 
-  const speedRef = useRef();
+  const theme = createTheme({
+    components: {
+      // Name of the component
+      MuiSlider: {
+        styleOverrides: {
+          // Name of the slot
+          thumb: {
+            // Some CSS
+            transitionDuration: `${frameLength}ms`,
+          },
+          track: {
+            // Some CSS
+            transitionDuration: `${frameLength}ms`,
+          },
+        },
+      },
+    },
+  });
 
   const handleApply = (event) => {
+    setFrameLength(speed);
     console.log(speed, showImportant);
   };
 
@@ -144,7 +163,7 @@ export function Controls({ len, tick }) {
           setIsPlaying(false);
           clearInterval(id);
         }
-      }, TICK_LENGTH); //same as in Player.jsx
+      }, frameLength); //same as in Player.jsx
     }
     return () => {
       clearInterval(id);
@@ -159,7 +178,6 @@ export function Controls({ len, tick }) {
           Długość klatki{" "}
           <TextInput
             type={"number"}
-            ref={speedRef}
             disabled={isPlaying}
             onChange={handleSpeedChange}
             value={speed}
@@ -191,16 +209,23 @@ export function Controls({ len, tick }) {
         }}
       />
       <Column>
-        <Slider
-          value={tick}
-          step={1}
-          min={0}
-          max={len - 1}
-          onChange={(e, v) => setTick(v)}
-        />
+        <ThemeProvider theme={theme}>
+          <Slider
+            value={tick}
+            step={1}
+            min={0}
+            max={len - 1}
+            onChange={(e, v) => setTick(v)}
+          />
+        </ThemeProvider>
         <PredictionContainer>
           <Predictions />
-          <Indicator style={{ left: `${(tick * 100) / len}%` }} />
+          <Indicator
+            style={{
+              left: `${(tick * 100) / len}%`,
+              transitionDuration: `${frameLength}ms`,
+            }}
+          />
           <Divider />
         </PredictionContainer>
       </Column>

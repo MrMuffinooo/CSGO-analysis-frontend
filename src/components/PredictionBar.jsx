@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 
-import { COLOR_CT, COLOR_T, TICK_LENGTH } from "../utils/constans";
-import { RoundContext } from "../utils/Contexts";
+import { COLOR_CT, COLOR_T } from "../utils/constans";
+import { FrameLengthContext, RoundContext } from "../utils/Contexts";
 
 const Container = styled.div`
   height: 75px;
@@ -25,7 +25,6 @@ const Bar = styled.div`
   width: 50%;
   transition-property: width;
   transition-timing-function: ease-in-out;
-  transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
 
   z-index: 0;
 `;
@@ -50,6 +49,7 @@ const Middle = styled.div`
 
 export function PredictionBar({ tick }) {
   const round = useContext(RoundContext);
+  const frameLength = useContext(FrameLengthContext);
 
   if (!round.CTpredictions) {
     return;
@@ -61,7 +61,7 @@ export function PredictionBar({ tick }) {
 
   return (
     <Container>
-      <Bar style={{ width: width }} />
+      <Bar style={{ width: width, transitionDuration: `${frameLength}ms` }} />
       <PercentContainer
         style={{ color: pred >= 85 ? "white" : pred <= 15 ? "red" : COLOR_T }}
       >

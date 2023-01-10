@@ -10,9 +10,8 @@ import ctIconFire from "../assets/icons/ctIcon_fire.png";
 import ctIconFlashFire from "../assets/icons/ctIcon_fire_flash.png";
 import tIconFlashFire from "../assets/icons/tIcon_fire_flash.png";
 import ctDead from "../assets/icons/ctDead.png";
-import { GameContext } from "../utils/Contexts";
+import { FrameLengthContext, GameContext } from "../utils/Contexts";
 import { getMapMeta } from "../utils/getMapMeta.jsx";
-import { TICK_LENGTH } from "../utils/constans";
 
 const PlayerIndicator = styled.div`
   width: 20px;
@@ -28,7 +27,6 @@ const PlayerIndicator = styled.div`
   transition-property: left, bottom, transform;
   transition-timing-function: linear;
   transform-origin: center;
-  transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
 `;
 
 function Player({
@@ -44,6 +42,7 @@ function Player({
   radarWidth,
 }) {
   const game = useContext(GameContext);
+  const frameLength = useContext(FrameLengthContext);
 
   const [resolution, setResolution] = useState(5.0);
   const [offsetX, setOffsetX] = useState(2500);
@@ -125,6 +124,7 @@ function Player({
         transform: rot,
         backgroundImage: playerIcon,
         opacity: hp !== 0 ? 1 : 0.5,
+        transitionDuration: `${frameLength}ms`,
       }}
     >
       {no}

@@ -3,9 +3,8 @@ import styled from "styled-components";
 import bomb from "../assets/icons/bomb-dropped.png";
 import defused from "../assets/icons/bomb-defused.png";
 import planted from "../assets/icons/bomb-planted.png";
-import { GameContext } from "../utils/Contexts";
+import { FrameLengthContext, GameContext } from "../utils/Contexts";
 import { getMapMeta } from "../utils/getMapMeta";
-import { TICK_LENGTH } from "../utils/constans";
 
 const BombIndicator = styled.div`
   background-position: center;
@@ -19,11 +18,12 @@ const BombIndicator = styled.div`
   transition-property: left, bottom, transform;
   transition-timing-function: linear;
   transform-origin: center;
-  transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
+  // same as in Controls.jsx
 `;
 
 function Player({ x, y, state, slice, radarWidth }) {
   const game = useContext(GameContext);
+  const frameLength = useContext(FrameLengthContext);
 
   const [resolution, setResolution] = useState(5.0);
   const [offsetX, setOffsetX] = useState(2500);
@@ -66,6 +66,7 @@ function Player({ x, y, state, slice, radarWidth }) {
         backgroundImage: bombIcon,
         width: state < 1 ? "10px" : "15px",
         height: state < 1 ? "10px" : "15px",
+        transitionDuration: `${frameLength}ms`,
       }}
     ></BombIndicator>
   );

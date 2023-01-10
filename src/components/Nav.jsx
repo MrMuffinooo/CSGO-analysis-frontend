@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import styled from "styled-components";
-import { TICK_LENGTH } from "../utils/constans";
 import { getMatchData } from "../utils/getMatch";
 import { getMatchesData } from "../utils/getMatches";
 import { MatchListing } from "./MatchListing";
@@ -16,7 +15,7 @@ const Container = styled.div`
 
   transition-property: width, min-width;
   transition-timing-function: ease-in-out;
-  transition-duration: ${TICK_LENGTH}ms; // same as in Controls.jsx
+  transition-duration: 250ms; // same as in Controls.jsx
 `;
 
 const ListingsContainer = styled.div`

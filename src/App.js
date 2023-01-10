@@ -3,9 +3,11 @@ import styled from "styled-components";
 
 import burger from "./assets/icons/burger.png";
 import {
+  FrameLengthContext,
   GameContext,
   IsPlayingContext,
   RoundContext,
+  SetFrameLengthContext,
   SetIsPlayingContext,
   SetTickContext,
 } from "./utils/Contexts";
@@ -45,6 +47,7 @@ function App() {
   const [navIsHidden, setNavIsHidden] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [tick, setTick] = useState(false);
+  const [frameLength, setFrameLength] = useState(250);
 
   return (
     <Container>
@@ -53,20 +56,24 @@ function App() {
           <IsPlayingContext.Provider value={isPlaying}>
             <SetIsPlayingContext.Provider value={setIsPlaying}>
               <SetTickContext.Provider value={setTick}>
-                <Article>
-                  <Main tick={tick} />
-                  <Burger
-                    onClick={() =>
-                      setNavIsHidden((navIsHidden) => !navIsHidden)
-                    }
-                  />
-                </Article>
+                <FrameLengthContext.Provider value={frameLength}>
+                  <SetFrameLengthContext.Provider value={setFrameLength}>
+                    <Article>
+                      <Main tick={tick} />
+                      <Burger
+                        onClick={() =>
+                          setNavIsHidden((navIsHidden) => !navIsHidden)
+                        }
+                      />
+                    </Article>
 
-                <Nav
-                  setGame={setGame}
-                  setRound={setRound}
-                  navIsHidden={navIsHidden}
-                />
+                    <Nav
+                      setGame={setGame}
+                      setRound={setRound}
+                      navIsHidden={navIsHidden}
+                    />
+                  </SetFrameLengthContext.Provider>
+                </FrameLengthContext.Provider>
               </SetTickContext.Provider>
             </SetIsPlayingContext.Provider>
           </IsPlayingContext.Provider>
