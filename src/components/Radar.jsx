@@ -6,7 +6,7 @@ import { GameContext, RoundContext } from "../utils/Contexts";
 import { Grenade } from "./Grenade";
 import Player from "./Player";
 
-export function Radar({ tab, tick }) {
+export function Radar({ tick }) {
   const ref = useRef({ current: { offsetWidth: 1024 } });
   const round = useContext(RoundContext);
   const game = useContext(GameContext);
@@ -17,7 +17,7 @@ export function Radar({ tab, tick }) {
 
   useLayoutEffect(() => {
     setWidth(ref.current.offsetWidth);
-  }, [ref.current.offsetWidth, tab]);
+  }, [ref.current.offsetWidth]);
 
   return (
     <div
