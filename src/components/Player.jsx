@@ -112,10 +112,6 @@ function Player({
 
   const playerIcon = `url(${getPlayerIcon()})`;
 
-  // useEffect(() => {
-  //    console.log("Player " + no + " has " + hp + " HP");
-  // }, [hp]);
-
   return (
     <PlayerIndicator
       style={{

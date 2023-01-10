@@ -11,9 +11,6 @@ export function Radar({ tick }) {
   const round = useContext(RoundContext);
   const game = useContext(GameContext);
   const [width, setWidth] = useState(1024);
-  // useEffect(() => {
-  //   console.log("width", ref.current ? ref.current.offsetWidth : 0);
-  // }, [ref.current]);
 
   useLayoutEffect(() => {
     setWidth(ref.current.offsetWidth);

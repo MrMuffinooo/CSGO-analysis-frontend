@@ -49,8 +49,6 @@ export function MatchListing({
   selectedRound,
   setSelectedRound,
 }) {
-  //open - which listing is open
-
   const game = useContext(GameContext);
   const setIsPlaying = useContext(SetIsPlayingContext);
   const setTick = useContext(SetTickContext);

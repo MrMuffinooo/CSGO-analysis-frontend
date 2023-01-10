@@ -15,7 +15,7 @@ const Container = styled.div`
 
   transition-property: width, min-width;
   transition-timing-function: ease-in-out;
-  transition-duration: 250ms; // same as in Controls.jsx
+  transition-duration: 250ms;
 `;
 
 const ListingsContainer = styled.div`

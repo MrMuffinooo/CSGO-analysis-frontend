@@ -18,7 +18,6 @@ const BombIndicator = styled.div`
   transition-property: left, bottom, transform;
   transition-timing-function: linear;
   transform-origin: center;
-  // same as in Controls.jsx
 `;
 
 function Player({ x, y, state, slice, radarWidth }) {
