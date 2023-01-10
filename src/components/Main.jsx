@@ -98,7 +98,7 @@ export function Main({ tick }) {
           <SideRadar isLeft={false} tick={tick} />
           {round.clockTime && <Clock clock={round.clockTime[tick]} />}
         </Container>
-        <Controls len={round.length ? round.length : 100} tick={tick} />
+        <Controls len={round.length ? round.length : -1} tick={tick} />
       </div>
       <div style={{ display: !tabIsMecz ? "none" : "block" }}>
         <Table />

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, memo } from "react";
 import styled from "styled-components";
 import { COLOR_CT, COLOR_T } from "../utils/constans";
 import { RoundContext } from "../utils/Contexts";
@@ -21,7 +21,7 @@ const PredictionMoment = styled.div`
   border: none;
 `;
 
-export const Predictions = React.memo(() => {
+function Predictionsss({ showImportant }) {
   const round = useContext(RoundContext);
 
   return (
@@ -30,11 +30,30 @@ export const Predictions = React.memo(() => {
         round.CTpredictions.map((e, i) => {
           return (
             <PredictionMoment key={i}>
-              <CTBox style={{ height: `${e * 100}%` }} />
-              <TBox />
+              <CTBox
+                style={{
+                  height: `${e * 100}%`,
+                  opacity: showImportant
+                    ? round.importantMoments[i]
+                      ? 1
+                      : 0.2
+                    : 1,
+                }}
+              />
+              <TBox
+                style={{
+                  opacity: showImportant
+                    ? round.importantMoments[i]
+                      ? 1
+                      : 0.2
+                    : 1,
+                }}
+              />
             </PredictionMoment>
           );
         })}
     </>
   );
-});
+}
+
+export const Predictions = memo(Predictionsss);

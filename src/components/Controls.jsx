@@ -8,6 +8,7 @@ import pause from "../assets/icons/pause.png";
 import {
   FrameLengthContext,
   IsPlayingContext,
+  RoundContext,
   SetFrameLengthContext,
   SetIsPlayingContext,
   SetTickContext,
@@ -81,15 +82,18 @@ const AdditionalOptions = styled.div`
   right: 0;
   bottom: 100%;
   display: flex;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
+  border-top: 2px solid grey;
+  border-left: 2px solid grey;
   padding: 3px 3px 3px 15px;
+  background-color: white;
 `;
 const SpeedSetter = styled.div`
-  margin-right: 15px;
+  margin-right: 7px;
 `;
 const ShowImportantSetter = styled.div`
   margin-right: 15px;
+  padding-left: 7px;
+  border-left: 1px solid black;
 `;
 const TextInput = styled.input`
   width: 50px;
@@ -109,11 +113,13 @@ const ApplyButton = styled.button`
 export function Controls({ len, tick }) {
   const isPlaying = useContext(IsPlayingContext);
   const setIsPlaying = useContext(SetIsPlayingContext);
+  const round = useContext(RoundContext);
   const setTick = useContext(SetTickContext);
   const frameLength = useContext(FrameLengthContext);
   const setFrameLength = useContext(SetFrameLengthContext);
   const [speed, setSpeed] = useState(250);
   const [showImportant, setShowImportant] = useState(false);
+  const [important, setImportant] = useState(false);
 
   const theme = createTheme({
     components: {
@@ -136,7 +142,7 @@ export function Controls({ len, tick }) {
 
   const handleApply = (event) => {
     setFrameLength(speed);
-    console.log(speed, showImportant);
+    setImportant(showImportant);
   };
 
   const handleSpeedChange = (event) => {
@@ -154,9 +160,11 @@ export function Controls({ len, tick }) {
   var id = null;
   useEffect(() => {
     var counter = tick;
-    if (isPlaying) {
+
+    if (isPlaying && !important) {
       id = setInterval(() => {
         counter += 1;
+
         if (counter < len - 1) {
           setTick((tick) => tick + 1);
         } else {
@@ -164,7 +172,21 @@ export function Controls({ len, tick }) {
           clearInterval(id);
         }
       }, frameLength); //same as in Player.jsx
+    } else if (isPlaying) {
+      id = setInterval(() => {
+        do {
+          counter += 1;
+        } while (!round.importantMoments[counter]);
+
+        if (counter < len - 1) {
+          setTick(counter);
+        } else {
+          setIsPlaying(false);
+          clearInterval(id);
+        }
+      }, frameLength); //same as in Player.jsx
     }
+
     return () => {
       clearInterval(id);
     };
@@ -219,7 +241,8 @@ export function Controls({ len, tick }) {
           />
         </ThemeProvider>
         <PredictionContainer>
-          <Predictions />
+          <Predictions showImportant={important} />
+
           <Indicator
             style={{
               left: `${(tick * 100) / len}%`,
