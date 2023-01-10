@@ -1,5 +1,5 @@
 import { Slider } from "@mui/material";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import arrow from "../assets/icons/arrow.png";
@@ -11,8 +11,9 @@ import {
   SetTickContext,
 } from "../utils/Contexts";
 import { Predictions } from "./Predictions";
+import ok from "../assets/icons/ok.png";
 
-const PlayerContainer = styled.div`
+const Container = styled.div`
   display: flex;
   justify-content: center;
   position: sticky;
@@ -76,10 +77,60 @@ const Button = styled.button`
   background-position: center;
 `;
 
+const AdditionalOptions = styled.div`
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  display: flex;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  padding: 3px 3px 3px 15px;
+`;
+const SpeedSetter = styled.div`
+  margin-right: 15px;
+`;
+const ShowImportantSetter = styled.div`
+  margin-right: 15px;
+`;
+const TextInput = styled.input`
+  width: 50px;
+`;
+const CheckboxInput = styled.input``;
+const ApplyButton = styled.button`
+  display: block;
+  width: 25px;
+  height: 25px;
+  border-radius: 0px;
+  background-image: url(${ok});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+`;
+
 export function Controls({ len, tick }) {
   const isPlaying = useContext(IsPlayingContext);
   const setIsPlaying = useContext(SetIsPlayingContext);
   const setTick = useContext(SetTickContext);
+  const [speed, setSpeed] = useState(250);
+  const [showImportant, setShowImportant] = useState(false);
+
+  const speedRef = useRef();
+
+  const handleApply = (event) => {
+    console.log(speed, showImportant);
+  };
+
+  const handleSpeedChange = (event) => {
+    const val = event.target.value;
+    if (val < 50) {
+      setSpeed(50);
+      return;
+    } else if (val > 1000) {
+      setSpeed(1000);
+      return;
+    }
+    setSpeed(val);
+  };
 
   var id = null;
   useEffect(() => {
@@ -102,7 +153,37 @@ export function Controls({ len, tick }) {
 
   if (len < 0) return;
   return (
-    <PlayerContainer>
+    <Container>
+      <AdditionalOptions>
+        <SpeedSetter>
+          Długość klatki{" "}
+          <TextInput
+            type={"number"}
+            ref={speedRef}
+            disabled={isPlaying}
+            onChange={handleSpeedChange}
+            value={speed}
+          />{" "}
+          ms
+        </SpeedSetter>
+        <ShowImportantSetter>
+          Ważne momenty:
+          <CheckboxInput
+            type={"checkbox"}
+            onChange={() => setShowImportant(!showImportant)}
+            disabled={isPlaying}
+            checked={showImportant}
+          />
+        </ShowImportantSetter>
+        <ApplyButton
+          onClick={handleApply}
+          disabled={isPlaying}
+          style={{
+            backgroundColor: isPlaying ? "grey" : "#00ff003d",
+            cursor: isPlaying ? "not-allowed" : "pointer",
+          }}
+        />
+      </AdditionalOptions>
       <Button
         onClick={() => setIsPlaying(!isPlaying)}
         style={{
@@ -123,6 +204,6 @@ export function Controls({ len, tick }) {
           <Divider />
         </PredictionContainer>
       </Column>
-    </PlayerContainer>
+    </Container>
   );
 }

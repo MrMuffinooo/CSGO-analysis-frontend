@@ -124,7 +124,7 @@ export function Uploader() {
       <ChooseButton
         ref={fileRef}
         type={"file"}
-        accept={".dem, .png"}
+        accept={".dem"}
         onChange={handleFileSelect}
         required
       />
