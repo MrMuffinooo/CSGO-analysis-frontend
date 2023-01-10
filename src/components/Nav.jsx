@@ -49,7 +49,7 @@ function Navvv({ setGame, setRound, navIsHidden }) {
     >
       <Uploader />
       <FlexColumn>
-        <Button onClick={() => getMatchesData(setGames)}>Odświerz listę</Button>
+        <Button onClick={() => getMatchesData(setGames)}>Odśwież listę</Button>
         <ListingsContainer>
           {games &&
             games.map((e, i) => {
