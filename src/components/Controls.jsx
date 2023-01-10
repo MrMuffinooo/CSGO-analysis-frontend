@@ -15,6 +15,7 @@ import {
 } from "../utils/Contexts";
 import { Predictions } from "./Predictions";
 import ok from "../assets/icons/ok.png";
+import { useRef } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -108,6 +109,8 @@ const ApplyButton = styled.button`
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  background-color: #82df82;
+  cursor: pointer;
 `;
 
 export function Controls({ len, tick }) {
@@ -120,19 +123,16 @@ export function Controls({ len, tick }) {
   const [speed, setSpeed] = useState(250);
   const [showImportant, setShowImportant] = useState(false);
   const [important, setImportant] = useState(false);
+  var id = useRef(null);
 
   const theme = createTheme({
     components: {
-      // Name of the component
       MuiSlider: {
         styleOverrides: {
-          // Name of the slot
           thumb: {
-            // Some CSS
             transitionDuration: `${frameLength}ms`,
           },
           track: {
-            // Some CSS
             transitionDuration: `${frameLength}ms`,
           },
         },
@@ -157,23 +157,22 @@ export function Controls({ len, tick }) {
     setSpeed(val);
   };
 
-  var id = null;
   useEffect(() => {
     var counter = tick;
 
     if (isPlaying && !important) {
-      id = setInterval(() => {
+      id.current = setInterval(() => {
         counter += 1;
 
         if (counter < len - 1) {
           setTick((tick) => tick + 1);
         } else {
           setIsPlaying(false);
-          clearInterval(id);
+          clearInterval(id.current);
         }
-      }, frameLength); //same as in Player.jsx
+      }, frameLength);
     } else if (isPlaying) {
-      id = setInterval(() => {
+      id.current = setInterval(() => {
         do {
           counter += 1;
         } while (!round.importantMoments[counter]);
@@ -182,15 +181,15 @@ export function Controls({ len, tick }) {
           setTick(counter);
         } else {
           setIsPlaying(false);
-          clearInterval(id);
+          clearInterval(id.current);
         }
-      }, frameLength); //same as in Player.jsx
+      }, frameLength);
     }
 
     return () => {
-      clearInterval(id);
-    };
-  }, [isPlaying]);
+      clearInterval(id.current);
+    }; // eslint-disable-next-line
+  }, [isPlaying, frameLength, important, len]);
 
   if (len < 0) return;
   return (
@@ -200,7 +199,6 @@ export function Controls({ len, tick }) {
           Długość klatki{" "}
           <TextInput
             type={"number"}
-            disabled={isPlaying}
             onChange={handleSpeedChange}
             value={speed}
           />{" "}
@@ -211,18 +209,10 @@ export function Controls({ len, tick }) {
           <CheckboxInput
             type={"checkbox"}
             onChange={() => setShowImportant(!showImportant)}
-            disabled={isPlaying}
             checked={showImportant}
           />
         </ShowImportantSetter>
-        <ApplyButton
-          onClick={handleApply}
-          disabled={isPlaying}
-          style={{
-            backgroundColor: isPlaying ? "grey" : "#00ff003d",
-            cursor: isPlaying ? "not-allowed" : "pointer",
-          }}
-        />
+        <ApplyButton onClick={handleApply} />
       </AdditionalOptions>
       <Button
         onClick={() => setIsPlaying(!isPlaying)}
