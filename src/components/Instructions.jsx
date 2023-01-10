@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import bomb from "../assets/icons/bomb-dropped.png";
 import defused from "../assets/icons/bomb-defused.png";
@@ -63,7 +63,7 @@ const Li = styled.ul`
   transition-duration: 150ms;
 `;
 
-export function Instructions() {
+function Instructionsss() {
   return (
     <Container>
       <Left>
@@ -157,3 +157,4 @@ export function Instructions() {
     </Container>
   );
 }
+export const Instructions = memo(Instructionsss);

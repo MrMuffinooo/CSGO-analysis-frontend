@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, memo } from "react";
 import styled from "styled-components";
 import { COLOR_CT, COLOR_T } from "../utils/constans";
 import { RoundContext } from "../utils/Contexts";
@@ -19,7 +19,7 @@ const Info = styled.div`
   align-self: center;
 `;
 
-export function RoundInfo() {
+function RoundInfooo() {
   const round = useContext(RoundContext);
 
   if (!round.tScore) {
@@ -34,3 +34,4 @@ export function RoundInfo() {
     </Container>
   );
 }
+export const RoundInfo = memo(RoundInfooo);

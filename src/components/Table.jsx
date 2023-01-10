@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, memo } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { GameContext } from "../utils/Contexts";
 
@@ -43,7 +43,7 @@ const columns = [
   },
 ];
 
-export default function Table() {
+function Tableee() {
   const game = useContext(GameContext);
   const [rows, setRows] = useState([]);
 
@@ -114,3 +114,4 @@ export default function Table() {
     />
   );
 }
+export const Table = memo(Tableee);

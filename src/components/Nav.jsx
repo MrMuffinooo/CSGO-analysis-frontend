@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 
 import styled from "styled-components";
 import { getMatchData } from "../utils/getMatch";
@@ -35,7 +35,7 @@ const FlexColumn = styled.div`
   flex-direction: column;
 `;
 
-export function Nav({ setGame, setRound, navIsHidden }) {
+function Navvv({ setGame, setRound, navIsHidden }) {
   const [games, setGames] = useState([]);
   const [whoIsOpen, setWhoIsOpen] = useState(-1);
   const [selectedRound, setSelectedRound] = useState(-1);
@@ -74,3 +74,4 @@ export function Nav({ setGame, setRound, navIsHidden }) {
     </Container>
   );
 }
+export const Nav = memo(Navvv);

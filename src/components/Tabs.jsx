@@ -1,5 +1,6 @@
-import React from "react";
+import React, { memo, useContext } from "react";
 import styled from "styled-components";
+import { SetIsPlayingContext } from "../utils/Contexts";
 
 const TabsContainer = styled.div`
   display: flex;
@@ -19,7 +20,15 @@ const Tab = styled.div`
   cursor: pointer;
 `;
 
-export function Tabs({ tabIsMecz, handleMeczClick, handleRundaClick }) {
+function Tabsss({ tabIsMecz, setTabIsMecz }) {
+  const setIsPlaying = useContext(SetIsPlayingContext);
+  const handleMeczClick = () => {
+    setTabIsMecz(true);
+    setIsPlaying(false);
+  };
+  const handleRundaClick = () => {
+    setTabIsMecz(false);
+  };
   return (
     <TabsContainer>
       <Tab
@@ -47,3 +56,4 @@ export function Tabs({ tabIsMecz, handleMeczClick, handleRundaClick }) {
     </TabsContainer>
   );
 }
+export const Tabs = memo(Tabsss);

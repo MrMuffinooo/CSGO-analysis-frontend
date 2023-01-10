@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useContext } from "react";
+import React, { useContext, memo } from "react";
 
 import { COLOR_CT, COLOR_T } from "../utils/constans";
 import { GameContext, RoundContext } from "../utils/Contexts";
@@ -12,15 +12,25 @@ const BannerChild = styled.div`
   width: 33%;
 `;
 
+const Banner = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100px;
+  font-size: 40px;
+  font-weight: bold;
+  border-bottom: 2px solid black;
+`;
+
 const WelcomeText = styled.div``;
 
-export function BannerContent({ tabIsMecz }) {
+function BannerContenttt({ tabIsMecz }) {
   const game = useContext(GameContext);
   const round = useContext(RoundContext);
 
   if (game.teams) {
     return (
-      <>
+      <Banner>
         <BannerChild style={{ color: COLOR_CT }}>
           {tabIsMecz
             ? game.teams.lastCTSide.name
@@ -44,13 +54,17 @@ export function BannerContent({ tabIsMecz }) {
             ? game.teams.lastTSide.name
             : ""}
         </BannerChild>
-      </>
+      </Banner>
     );
   }
 
   return (
-    <WelcomeText>
-      Użyj panelu po prawej by wysłać lub wybrać mecz --&gt;
-    </WelcomeText>
+    <Banner>
+      <WelcomeText>
+        Użyj panelu po prawej by wysłać lub wybrać mecz --&gt;
+      </WelcomeText>
+    </Banner>
   );
 }
+
+export const BannerContent = memo(BannerContenttt);
