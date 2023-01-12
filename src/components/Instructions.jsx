@@ -71,7 +71,7 @@ function Instructionsss() {
         <Ul>
           <li>K - Zabójstwa</li>
           <li>A - Asysty</li>
-          <li>D - Śmierci</li>
+          <li>D - Śmierci gracza</li>
           <li>KD - Zabójstwa / Śmierci</li>
           <li>KPR - Liczba zabójstw na rundę</li>
           <li>
