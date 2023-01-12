@@ -175,7 +175,7 @@ export function Controls({ len, tick }) {
       id.current = setInterval(() => {
         do {
           counter += 1;
-        } while (!round.importantMoments[counter]);
+        } while (!round.importantMoments[counter] || counter >= len - 1);
 
         if (counter < len - 1) {
           setTick(counter);
