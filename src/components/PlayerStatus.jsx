@@ -139,7 +139,7 @@ export function PlayerStatus({
                 key={i}
               >
                 {r.gainValue > 0 ? "+" : ""}
-                {Math.round(r.gainValue * 100)} {r.type}
+                {Math.round(r.gainValue * 1000) / 10} {r.type}
               </Rating>
             );
           })}

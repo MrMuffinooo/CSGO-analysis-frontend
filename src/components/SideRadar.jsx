@@ -41,7 +41,7 @@ export function SideRadar({ isLeft, tick }) {
             hasArmor={p.hasArmor}
             hasHelmet={p.hasHelmet}
             hasDef={p.hasDef[tick]}
-            rating={Math.round(p.sumRating * 100)}
+            rating={Math.round(p.sumRating * 1000) / 10}
             ratings={p.ratings}
           />
         );
