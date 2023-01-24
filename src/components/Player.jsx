@@ -67,11 +67,11 @@ function Player({
   const xPos =
     ((x + offsetX - (slice ? sliceOffsetX : 0)) / resolution / 1024) *
       radarWidth -
-    (10 / 1024) * radarWidth;
+    10;
   const yPos =
     ((y + offsetY - (slice ? sliceOffsetY : 0)) / resolution / 1024) *
       radarWidth -
-    (12 / 1024) * radarWidth;
+    12;
   const fixAngle = -angle + 90;
   const rot = hp !== 0 ? "rotate(" + fixAngle + "deg)" : "none";
 
