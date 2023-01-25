@@ -20,6 +20,7 @@ const ListingContainer = styled.div`
 const RoundListingContainer = styled.div`
   display: flex;
   justify-content: flex-start;
+  padding-right: 3px;
   flex-wrap: wrap;
   border-top: 0.5px solid lightgray;
 `;

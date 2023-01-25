@@ -9,6 +9,7 @@ const ListingContainer = styled.div`
   justify-content: center;
   width: 20px;
   height: 20px;
+  border-right: 1px solid lightgray;
   cursor: pointer;
   &:hover {
     background-color: lightgray !important;
