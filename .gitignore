@@ -26,3 +26,4 @@ public/r7.json
 .gitignore
 public/django_round.json
 public/finalRound.json
+src/utils/constans.jsx

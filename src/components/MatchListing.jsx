@@ -80,13 +80,13 @@ export function MatchListing({
           src={arrow}
           style={{
             transform: isOpen ? "rotate(90deg)" : "none",
-            marginTop: "3px",
+            marginTop: "13px",
           }}
         />
       </ClickableDiv>
-      <div>
-        <ClickableDiv onClick={handleMatchClick}>
-          {no} {children}
+      <div style={{ width: "100%" }}>
+        <ClickableDiv onClick={handleMatchClick} style={{ marginLeft: "10px" }}>
+          {no} | {children}
         </ClickableDiv>
         <RoundListingContainer>
           {isOpen &&

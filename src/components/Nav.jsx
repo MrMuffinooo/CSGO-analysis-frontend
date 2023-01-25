@@ -65,7 +65,8 @@ function Navvv({ setGame, setRound, navIsHidden }) {
                   getMatch={() => getMatchData(setGame, e.id)}
                   setRound={setRound}
                 >
-                  {e.name}
+                  {e.name ? e.name + " | " : ""}
+                  {e.map} <br /> {e.createdTimestamp.replace("T", " ")}
                 </MatchListing>
               );
             })}
