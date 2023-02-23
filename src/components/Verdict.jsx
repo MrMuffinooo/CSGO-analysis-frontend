@@ -27,8 +27,6 @@ export function Verdict({ tick }) {
       ? "wysadzenie celu"
       : "rozbrojenie bomby";
 
-  const verdict = "Wygrywają " + team + " przez " + condition;
-
   return (
     <Container>
       Wygrywają{" "}

@@ -22,7 +22,7 @@ const Info = styled.div`
 function RoundInfooo() {
   const round = useContext(RoundContext);
 
-  if (!round.tScore) {
+  if (!round.winningSide) {
     return;
   }
 
