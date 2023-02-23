@@ -1,0 +1,159 @@
+{
+    "id": 1,
+    "name": null,
+    "createdTimestamp": "2023-01-15T17:34:55",
+    "map": "de_mirage",
+    "roundsPlayed": 35,
+    "teams": {
+        "lastTSide": {
+            "name": "ENCE eSports",
+            "players": [
+                {
+                    "name": "Snappi",
+                    "kills": 25,
+                    "assists": 2,
+                    "deaths": 26,
+                    "kd": 0.9615384615384616,
+                    "killsPerRound": 0.7142857142857143,
+                    "damage": 2298,
+                    "adr": 65.65714285714286,
+                    "kast": 62.857142857142854,
+                    "flashedEnemies": 30,
+                    "flashedEnemiesDuration": 66.975204288,
+                    "rating": -0.011200825808280853
+                },
+                {
+                    "name": "dycha",
+                    "kills": 22,
+                    "assists": 5,
+                    "deaths": 23,
+                    "kd": 0.9565217391304348,
+                    "killsPerRound": 0.6285714285714286,
+                    "damage": 2669,
+                    "adr": 76.25714285714285,
+                    "kast": 68.57142857142857,
+                    "flashedEnemies": 40,
+                    "flashedEnemiesDuration": 77.89839467200002,
+                    "rating": 0.010657339152009542
+                },
+                {
+                    "name": "hades",
+                    "kills": 21,
+                    "assists": 5,
+                    "deaths": 21,
+                    "kd": 1.0,
+                    "killsPerRound": 0.6,
+                    "damage": 2475,
+                    "adr": 70.71428571428571,
+                    "kast": 60.0,
+                    "flashedEnemies": 39,
+                    "flashedEnemiesDuration": 87.45573649600001,
+                    "rating": 0.025231609203018847
+                },
+                {
+                    "name": "maden",
+                    "kills": 25,
+                    "assists": 5,
+                    "deaths": 22,
+                    "kd": 1.1363636363636365,
+                    "killsPerRound": 0.7142857142857143,
+                    "damage": 2762,
+                    "adr": 78.91428571428571,
+                    "kast": 57.14285714285714,
+                    "flashedEnemies": 44,
+                    "flashedEnemiesDuration": 91.95811020000002,
+                    "rating": 0.009729792319504762
+                },
+                {
+                    "name": "Spinx",
+                    "kills": 26,
+                    "assists": 7,
+                    "deaths": 26,
+                    "kd": 1.0,
+                    "killsPerRound": 0.7428571428571429,
+                    "damage": 2978,
+                    "adr": 85.08571428571429,
+                    "kast": 68.57142857142857,
+                    "flashedEnemies": 31,
+                    "flashedEnemiesDuration": 78.56965966400001,
+                    "rating": 0.01323101588778019
+                }
+            ]
+        },
+        "lastCTSide": {
+            "name": "BIG Clan",
+            "players": [
+                {
+                    "name": "tabseN",
+                    "kills": 31,
+                    "assists": 7,
+                    "deaths": 24,
+                    "kd": 1.2916666666666667,
+                    "killsPerRound": 0.8857142857142857,
+                    "damage": 3424,
+                    "adr": 97.82857142857142,
+                    "kast": 65.71428571428571,
+                    "flashedEnemies": 49,
+                    "flashedEnemiesDuration": 114.154207968,
+                    "rating": -0.0060428992337846635
+                },
+                {
+                    "name": "Krimbo",
+                    "kills": 15,
+                    "assists": 7,
+                    "deaths": 24,
+                    "kd": 0.625,
+                    "killsPerRound": 0.42857142857142855,
+                    "damage": 1856,
+                    "adr": 53.02857142857143,
+                    "kast": 57.14285714285714,
+                    "flashedEnemies": 35,
+                    "flashedEnemiesDuration": 71.336939392,
+                    "rating": -0.026254214333427443
+                },
+                {
+                    "name": "syrsoN",
+                    "kills": 22,
+                    "assists": 2,
+                    "deaths": 22,
+                    "kd": 1.0,
+                    "killsPerRound": 0.6285714285714286,
+                    "damage": 2054,
+                    "adr": 58.68571428571428,
+                    "kast": 57.14285714285714,
+                    "flashedEnemies": 65,
+                    "flashedEnemiesDuration": 125.052272984,
+                    "rating": -0.022404837877786615
+                },
+                {
+                    "name": "tiziaN",
+                    "kills": 31,
+                    "assists": 5,
+                    "deaths": 25,
+                    "kd": 1.24,
+                    "killsPerRound": 0.8857142857142857,
+                    "damage": 3356,
+                    "adr": 95.88571428571429,
+                    "kast": 68.57142857142857,
+                    "flashedEnemies": 42,
+                    "flashedEnemiesDuration": 106.75600219200001,
+                    "rating": 0.04066682755307634
+                },
+                {
+                    "name": "faveN",
+                    "kills": 19,
+                    "assists": 3,
+                    "deaths": 24,
+                    "kd": 0.7916666666666666,
+                    "killsPerRound": 0.5428571428571428,
+                    "damage": 1990,
+                    "adr": 56.857142857142854,
+                    "kast": 68.57142857142857,
+                    "flashedEnemies": 47,
+                    "flashedEnemiesDuration": 89.80735576799998,
+                    "rating": -0.03361380686211002
+                }
+            ]
+        }
+    }
+}

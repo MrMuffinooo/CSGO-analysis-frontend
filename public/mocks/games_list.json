@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": null,
+        "createdTimestamp": "2023-01-15T17:34:55",
+        "map": "de_mirage"
+    },
+    {
+        "id": 2,
+        "name": "GraG2AstralisMap3",
+        "createdTimestamp": "2023-01-15T17:41:47",
+        "map": "de_vertigo"
+    },
+    {
+        "id": 3,
+        "name": "GraG2AstralisMap1",
+        "createdTimestamp": "2023-01-15T17:57:21",
+        "map": "de_nuke"
+    },
+    {
+        "id": 4,
+        "name": "GraG2AstralisMap2",
+        "createdTimestamp": "2023-01-15T18:09:40",
+        "map": "de_dust2"
+    }
+]

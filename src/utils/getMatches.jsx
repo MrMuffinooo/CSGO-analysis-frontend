@@ -1,8 +1,28 @@
 import axios from "axios";
-import { ENDPOINT } from "./constans";
 
 export const getMatchesData = async (setGames) => {
-  axios.get(`${ENDPOINT}/game/`).then((res) => {
-    setGames(res.data);
-  });
+  if (process.env.REACT_APP_ENDPOINT) {
+    axios.get(`${process.env.REACT_APP_ENDPOINT}/game/`).then((res) => {
+      setGames(res.data);
+    });
+  } else {
+    fetch(
+      "./mocks/games_list.json",
+
+      {
+        headers: {
+          "Content-Type": "application/json",
+
+          Accept: "application/json",
+        },
+      }
+    )
+      .then(function (response) {
+        return response.json();
+      })
+
+      .then(function (myJson) {
+        setGames(myJson);
+      });
+  }
 };

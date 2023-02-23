@@ -3,7 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { useState } from "react";
 import { useRef } from "react";
-import { COLOR_SECONDARY, ENDPOINT } from "../utils/constans";
+import { COLOR_SECONDARY } from "../utils/constans";
 
 const UploadContainer = styled.div``;
 
@@ -82,9 +82,13 @@ export function Uploader() {
   };
 
   const handleSubmit = async (event) => {
+    if (!process.env.REACT_APP_ENDPOINT) {
+      textRef.current.value = "No endpoint set";
+      return;
+    }
     const address = name
-      ? `${ENDPOINT}/upload/${name}/`
-      : `${ENDPOINT}/upload/`;
+      ? `${process.env.REACT_APP_ENDPOINT}/upload/${name}/`
+      : `${process.env.REACT_APP_ENDPOINT}/upload/`;
     setErr("");
     if (!selectedFile) {
       textRef.current.value = "Musisz wybrać plik";
